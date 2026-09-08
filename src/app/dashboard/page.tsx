@@ -40,6 +40,7 @@ export default async function DashboardPage() {
     { href: "/dashboard/growmeal", title: "GrowMeal™", description: "Use the 12-station garden as a practical learning laboratory." },
     { href: "/dashboard/food-discovery", title: "Food Discovery Lab™", description: "Run supervised ingredient, label and food-system learning activities." },
     { href: "/dashboard/passport", title: "Pathways Passport™", description: "Manage goals, projects, badges and demonstrated competencies." },
+    { href: "/dashboard/offline", title: "Offline & sync", description: "Review connectivity and field records waiting for secure synchronization." },
   ];
 
   return (
