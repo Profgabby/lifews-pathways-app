@@ -24,6 +24,12 @@ export default async function DashboardPage() {
     "TRANSITION_OFFICER",
     "M_AND_E_OFFICER",
   ].includes(profile.role);
+  const analyticsVisible = [
+    "SUPER_ADMIN",
+    "PROGRAM_ADMIN",
+    "SITE_COORDINATOR",
+    "M_AND_E_OFFICER",
+  ].includes(profile.role);
 
   const modules = [
     { href: "/dashboard/enrollment", title: "Enrollment & baseline", description: "Register learners, guardians and starting competency levels." },
@@ -63,6 +69,13 @@ export default async function DashboardPage() {
               <p className="subtitle">{module.description}</p>
             </Link>
           ))}
+
+          {analyticsVisible ? (
+            <Link href="/dashboard/analytics" className="card" style={{ display: "block", borderLeft: "4px solid var(--green)" }}>
+              <h2>Program analytics & KPIs</h2>
+              <p className="subtitle">Track participation, learning progression, GrowMeal™, badges, verified transitions and 3/6/12-month retention.</p>
+            </Link>
+          ) : null}
 
           {transitionVisible ? (
             <Link href="/dashboard/transitions" className="card" style={{ display: "block", borderLeft: "4px solid var(--green)" }}>
