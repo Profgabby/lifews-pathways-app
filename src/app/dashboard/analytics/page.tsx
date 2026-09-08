@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { recordProgressAssessment } from "./actions";
 
 export const dynamic = "force-dynamic";
 
@@ -10,7 +11,7 @@ const allowedRoles = new Set([
   "M_AND_E_OFFICER",
 ]);
 
-type Participant = { id: string; band: string; site_id: string };
+type Participant = { id: string; participant_code: string; preferred_name: string; band: string; site_id: string };
 type Baseline = { participant_id: string; literacy_level: number | null; numeracy_level: number | null };
 type Progress = { participant_id: string; literacy_level: number | null; numeracy_level: number | null; assessed_at: string };
 type Attendance = { participant_id: string; status: string };
@@ -76,7 +77,7 @@ export default async function AnalyticsPage() {
     { data: transitionData },
     { data: referralData },
   ] = await Promise.all([
-    supabase.from("participants").select("id, band, site_id").eq("active", true).limit(5000),
+    supabase.from("participants").select("id, participant_code, preferred_name, band, site_id").eq("active", true).order("preferred_name").limit(5000),
     supabase.from("baseline_assessments").select("participant_id, literacy_level, numeracy_level").limit(5000),
     supabase.from("progress_assessments").select("participant_id, literacy_level, numeracy_level, assessed_at").order("assessed_at", { ascending: false }).limit(10000),
     supabase.from("attendance_records").select("participant_id, status").limit(10000),
@@ -174,6 +175,38 @@ export default async function AnalyticsPage() {
         <div className="card"><div className="metric-label">Baseline coverage</div><div className="metric-value">{percentage(baselineByParticipant.size, participants.length)}</div></div>
         <div className="card"><div className="metric-label">Recorded attendance participation</div><div className="metric-value">{percentage(activeAttendanceParticipants.size, participants.length)}</div></div>
         <div className="card"><div className="metric-label">Transition plans</div><div className="metric-value">{percentage(plannedParticipants.size, participants.length)}</div></div>
+      </section>
+
+      <section className="card" style={{ marginTop: 16 }}>
+        <h2>Record a progress assessment</h2>
+        <p className="subtitle">Use the same 0–5 scale as the enrollment baseline. Leave a domain blank if it was not assessed. Analytics will compare only recorded, comparable values.</p>
+        <form action={recordProgressAssessment} style={{ display: "grid", gap: 12, marginTop: 14 }}>
+          <label>
+            Participant
+            <select name="participantId" required defaultValue="">
+              <option value="" disabled>Select participant</option>
+              {participants.map((participant) => (
+                <option key={participant.id} value={participant.id}>{participant.participant_code} — {participant.preferred_name} · {participant.band}</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Assessment type
+            <select name="assessmentType" required defaultValue="MIDLINE">
+              <option value="MIDLINE">Midline</option>
+              <option value="ENDLINE">Endline</option>
+              <option value="FOLLOW_UP">Follow-up</option>
+            </select>
+          </label>
+          <div className="grid metrics">
+            <label>Literacy level (0–5)<input name="literacyLevel" type="number" min="0" max="5" step="1" /></label>
+            <label>Numeracy level (0–5)<input name="numeracyLevel" type="number" min="0" max="5" step="1" /></label>
+            <label>Digital level (0–5)<input name="digitalLevel" type="number" min="0" max="5" step="1" /></label>
+            <label>Applied skills level (0–5)<input name="appliedSkillsLevel" type="number" min="0" max="5" step="1" /></label>
+          </div>
+          <label>Evidence note<textarea name="evidenceNote" rows={3} placeholder="Briefly state the assessment evidence or observed task." /></label>
+          <button type="submit">Save progress assessment</button>
+        </form>
       </section>
 
       <div className="grid section-grid" style={{ marginTop: 16 }}>
