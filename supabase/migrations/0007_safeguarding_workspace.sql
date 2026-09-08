@@ -24,6 +24,12 @@ create table public.safeguarding_audit_log (
 alter table public.safeguarding_actions enable row level security;
 alter table public.safeguarding_audit_log enable row level security;
 
+-- 0002 creates the baseline incident policies. Replace them here with stricter
+-- safeguarding + site-scoped versions so a fresh migration chain is deterministic.
+drop policy if exists "safeguarding authorized read incidents" on public.safeguarding_incidents;
+drop policy if exists "safeguarding authorized create incidents" on public.safeguarding_incidents;
+drop policy if exists "safeguarding authorized update incidents" on public.safeguarding_incidents;
+
 create policy "safeguarding authorized read incidents"
 on public.safeguarding_incidents
 for select to authenticated
