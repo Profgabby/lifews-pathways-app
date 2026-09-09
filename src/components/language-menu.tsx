@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { type AppLanguage, supportedLanguages } from "@/lib/i18n";
+import { type AppLanguage, supportedLanguages } from "@/lib/i18n6";
 
 export function LanguageMenu({ currentLanguage }: { currentLanguage: AppLanguage }) {
   const router = useRouter();
