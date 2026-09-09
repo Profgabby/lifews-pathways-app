@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { PwaRegister } from "@/components/pwa-register";
 import "./globals.css";
+import "./greenskills.css";
 
 export const metadata: Metadata = {
   title: {
