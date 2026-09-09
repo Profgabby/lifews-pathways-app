@@ -1,31 +1,36 @@
 import Link from "next/link";
+import { LanguageMenu } from "@/components/language-menu";
+import { homeCopy, localizeHref, normalizeLanguage } from "@/lib/i18n";
 
-const audiences = [
-  "Almajiri learners",
-  "Out-of-school children",
-  "Out-of-school girls",
-  "Underserved adolescents",
-  "Transitioning young adults",
-];
+type HomePageProps = {
+  searchParams?: Promise<{ lang?: string }>;
+};
 
-const navItems = [
-  ["Home", "/"],
-  ["Learner space", "/learner"],
-  ["Staff workspace", "/login"],
-  ["Program overview", "#overview"],
-];
+export default async function HomePage({ searchParams }: HomePageProps) {
+  const params = searchParams ? await searchParams : {};
+  const language = normalizeLanguage(params.lang);
+  const copy = homeCopy[language];
+  const rtl = language === "ar";
 
-export default function HomePage() {
+  const navItems = [
+    [copy.nav[0], localizeHref("/", language)],
+    [copy.nav[1], localizeHref("/learner", language)],
+    [copy.nav[2], localizeHref("/login", language)],
+    [copy.nav[3], "#overview"],
+  ];
+
   return (
-    <div className="shell public-shell">
+    <div className="shell public-shell" dir={rtl ? "rtl" : "ltr"}>
       <aside className="sidebar compact-sidebar">
         <div className="brand-lockup">
           <img className="brand-logo" src="/lifews-mark.svg" alt="LIFEWS logo" />
           <div className="brand">
             LIFEWS Pathways
-            <small>From Learning to Opportunity</small>
+            <small>{copy.tagline}</small>
           </div>
         </div>
+
+        <LanguageMenu currentLanguage={language} />
 
         <nav className="nav" aria-label="Primary navigation">
           {navItems.map(([label, href], index) => (
@@ -35,21 +40,18 @@ export default function HomePage() {
           ))}
         </nav>
 
-        <div className="sidebar-note">Learning • Skills • Agriculture • Transition</div>
+        <div className="sidebar-note">{copy.pillars.replace(" • Enterprise", "")}</div>
       </aside>
 
       <main className="main public-main">
         <header className="hero-simple">
-          <div className="eyebrow">A program developed by LIFEWS</div>
-          <h1>LIFEWS Pathways</h1>
-          <p className="hero-line">Learning • Skills • Agriculture • Enterprise • Transition</p>
-          <p className="subtitle hero-copy">
-            A practical learning and transition program for Almajiri learners, out-of-school
-            children and girls, underserved adolescents and transitioning young adults.
-          </p>
+          <div className="eyebrow">{copy.developed}</div>
+          <h1>{copy.title}</h1>
+          <p className="hero-line">{copy.pillars}</p>
+          <p className="subtitle hero-copy">{copy.intro}</p>
           <div className="hero-actions">
-            <Link className="primary-action" href="/learner">Enter learner space</Link>
-            <Link className="gold-action" href="/login">Staff sign in</Link>
+            <Link className="primary-action" href={localizeHref("/learner", language)}>{copy.learnerButton}</Link>
+            <Link className="gold-action" href={localizeHref("/login", language)}>{copy.staffButton}</Link>
           </div>
         </header>
 
@@ -59,51 +61,43 @@ export default function HomePage() {
 
         <section className="entry-grid" id="overview">
           <article className="entry-card learner-entry">
-            <div className="entry-kicker">For learners</div>
-            <h2>Learn, grow and build your Pathways Passport</h2>
-            <p>Use age-appropriate learning activities, GrowMeal tasks, food discovery, projects, challenges and progress milestones.</p>
-            <Link href="/learner">Open learner space →</Link>
+            <div className="entry-kicker">{copy.learnerKicker}</div>
+            <h2>{copy.learnerTitle}</h2>
+            <p>{copy.learnerBody}</p>
+            <Link href={localizeHref("/learner", language)}>{copy.learnerLink}</Link>
           </article>
 
           <article className="entry-card staff-entry">
-            <div className="entry-kicker">For educators and program staff</div>
-            <h2>Manage learning, attendance and verified transitions</h2>
-            <p>Authorized staff can enroll learners, record evidence, manage safeguarding, support transitions and review program performance.</p>
-            <Link href="/login">Open staff workspace →</Link>
+            <div className="entry-kicker">{copy.staffKicker}</div>
+            <h2>{copy.staffTitle}</h2>
+            <p>{copy.staffBody}</p>
+            <Link href={localizeHref("/login", language)}>{copy.staffLink}</Link>
           </article>
         </section>
 
         <section className="simple-section">
           <div>
-            <div className="eyebrow">Who the program serves</div>
-            <h2>Inclusive pathways into learning and opportunity</h2>
+            <div className="eyebrow">{copy.servesKicker}</div>
+            <h2>{copy.servesTitle}</h2>
           </div>
           <div className="audience-pills">
-            {audiences.map((audience) => <span key={audience}>{audience}</span>)}
+            {copy.audiences.map((audience) => <span key={audience}>{audience}</span>)}
           </div>
         </section>
 
         <section className="program-summary-grid">
-          <article>
-            <div className="gold-rule" />
-            <h3>Almajiri Learning & Livelihood Pathway</h3>
-            <p>Education, practical skills, agriculture and transition support.</p>
-          </article>
-          <article>
-            <div className="gold-rule" />
-            <h3>Girls Learning & Enterprise Pathway</h3>
-            <p>Learning, safeguarding, practical skills and future opportunity.</p>
-          </article>
-          <article>
-            <div className="gold-rule" />
-            <h3>General Out-of-School Pathway</h3>
-            <p>Flexible re-entry, competency building and positive transition planning.</p>
-          </article>
+          {copy.tracks.map(([title, body]) => (
+            <article key={title}>
+              <div className="gold-rule" />
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </article>
+          ))}
         </section>
 
         <footer className="program-footer simplified-footer">
           <img src="/lifews-mark.svg" alt="LIFEWS logo" />
-          <div><strong>LIFEWS Pathways</strong><span>Developed by LIFEWS.</span></div>
+          <div><strong>LIFEWS Pathways</strong><span>{copy.footer}</span></div>
         </footer>
       </main>
     </div>
