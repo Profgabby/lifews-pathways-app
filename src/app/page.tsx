@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { LanguageMenu } from "@/components/language-menu";
-import { homeCopy, localizeHref, normalizeLanguage } from "@/lib/i18n";
+import { homeCopy, localizeHref, normalizeLanguage } from "@/lib/i18n6";
 
 type HomePageProps = {
   searchParams?: Promise<{ lang?: string }>;
