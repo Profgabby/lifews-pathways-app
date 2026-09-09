@@ -3,13 +3,16 @@ import { PwaRegister } from "@/components/pwa-register";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "LIFEWS Pathways™",
-  description: "From Learning to Opportunity — digital infrastructure for LIFEWS Pathways™.",
-  applicationName: "LIFEWS Pathways™",
+  title: {
+    default: "LIFEWS GreenSkills™",
+    template: "%s | LIFEWS GreenSkills™",
+  },
+  description: "LIFEWS GreenSkills™ connects inclusive learning, vocational livelihoods and technical food-energy-water skills through Pathways™, Kadara™ and GreenTech™.",
+  applicationName: "LIFEWS GreenSkills™",
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
-    title: "LIFEWS Pathways™",
+    title: "LIFEWS GreenSkills™",
     statusBarStyle: "default",
   },
 };
