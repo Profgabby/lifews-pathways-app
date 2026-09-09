@@ -4,80 +4,15 @@ import { GREEN_SKILLS_JOURNEY, GREEN_SKILLS_NAME, GREEN_SKILLS_TAGLINE, greenSki
 import { localizeHref, normalizeLanguage } from "@/lib/i18n6";
 
 type HomePageProps = { searchParams?: Promise<{ lang?: string }> };
-
 export default async function GreenSkillsHome({ searchParams }: HomePageProps) {
-  const params = searchParams ? await searchParams : {};
-  const language = normalizeLanguage(params.lang);
-  const rtl = language === "ar";
-
-  return (
-    <div className="gs-shell" dir={rtl ? "rtl" : "ltr"}>
-      <aside className="gs-sidebar">
-        <Link href={localizeHref("/", language)} className="gs-brand">
-          <img src="/lifews-mark.svg" alt="LIFEWS" className="gs-brand-mark" />
-          <div><strong>LIFEWS</strong><span>GreenSkills™</span><small>{GREEN_SKILLS_TAGLINE}</small></div>
-        </Link>
-        <LanguageMenu currentLanguage={language} />
-        <nav className="gs-nav" aria-label="GreenSkills navigation">
-          <Link className="active" href={localizeHref("/", language)}>GreenSkills Home</Link>
-          <Link href={localizeHref("/pathways", language)}>Pathways</Link>
-          <Link href={localizeHref("/kadara", language)}>Kadara</Link>
-          <Link href={localizeHref("/greentech", language)}>GreenTech</Link>
-          <a href="#shared-systems">Skills Passport</a>
-          <a href="#shared-systems">FieldWorks</a>
-        </nav>
-        <div className="gs-sidebar-footer"><span>LEARN</span><span>•</span><span>PRACTICE</span><span>•</span><span>BUILD</span><span>•</span><span>THRIVE</span></div>
-      </aside>
-
-      <main className="gs-main">
-        <header className="gs-hero">
-          <div className="gs-eyebrow">A LIFEWS CAPABILITY PLATFORM</div>
-          <h1>Skills that move people<br/><span>from learning to livelihood.</span></h1>
-          <p className="gs-hero-tagline">{GREEN_SKILLS_TAGLINE}</p>
-          <p className="gs-hero-copy">{GREEN_SKILLS_NAME} connects inclusive learning, practical livelihood skills and advanced technical training through three distinct programs and one shared skills identity.</p>
-          <div className="gs-hero-actions">
-            <a className="gs-button gs-button-primary" href="#programs">Explore programs</a>
-            <Link className="gs-button gs-button-secondary" href={localizeHref("/login", language)}>Staff sign in</Link>
-          </div>
-        </header>
-
-        <section className="gs-journey" aria-label="GreenSkills progression">
-          {GREEN_SKILLS_JOURNEY.map((step, index) => <div className="gs-journey-item" key={step}><span>{step}</span>{index < GREEN_SKILLS_JOURNEY.length - 1 && <b>→</b>}</div>)}
-        </section>
-
-        <section id="programs" className="gs-section">
-          <div className="gs-section-heading"><div><div className="gs-eyebrow">THREE PROGRAMS. ONE SYSTEM.</div><h2>Choose the pathway that matches the learner.</h2></div><p>Participants do not have to pass through all three programs. They enter at the level appropriate to their age, prior learning, goals and demonstrated competence.</p></div>
-          <div className="gs-program-grid">
-            {greenSkillsPrograms.map((program) => (
-              <article className={`gs-program-card gs-program-${program.id}`} key={program.id}>
-                <div className="gs-program-top"><span className="gs-program-number">{program.number}</span><span className="gs-program-eyebrow">{program.eyebrow}</span></div>
-                <h3>{program.shortName}</h3><strong className="gs-program-tagline">{program.tagline}</strong><p>{program.purpose}</p>
-                <div className="gs-theme-list">{program.themes.slice(0, 6).map((theme) => <span key={theme}>{theme}</span>)}</div>
-                <Link className="gs-program-link" href={localizeHref(program.href, language)}>{program.action} →</Link>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="gs-progression-section">
-          <div className="gs-eyebrow">FLEXIBLE ENTRY. VERIFIED PROGRESSION.</div><h2>One ecosystem, multiple routes.</h2>
-          <div className="gs-route-grid">
-            <article><span>YOUNGER LEARNER</span><strong>Pathways → Education</strong><p>Foundational learning followed by formal-school re-entry, approved alternative education or continuing learning.</p></article>
-            <article><span>OLDER ADOLESCENT</span><strong>Pathways → Kadara</strong><p>Inclusive learning followed by vocational competence, employability and livelihood development.</p></article>
-            <article><span>TECHNICAL ROUTE</span><strong>Kadara → GreenTech</strong><p>Occupational foundations followed by advanced FEW-system technical training, practical assessment and certification.</p></article>
-            <article><span>DIRECT ENTRY</span><strong>Kadara or GreenTech</strong><p>Eligible youth, artisans, technicians and graduates can enter at an appropriate competency level without completing Pathways first.</p></article>
-          </div>
-        </section>
-
-        <section id="shared-systems" className="gs-shared-section">
-          <div className="gs-section-heading"><div><div className="gs-eyebrow">SHARED INFRASTRUCTURE</div><h2>What connects the three programs.</h2></div><p>GreenSkills develops capability. AgriHubs provide places to practise. LIFEWS systems provide equipment. CHIPU supports monitoring and intelligence.</p></div>
-          <div className="gs-shared-grid">{sharedGreenSkillsSystems.map((system) => <article key={system.name}><h3>{system.name}</h3><p>{system.description}</p></article>)}</div>
-        </section>
-
-        <section className="gs-passport-band"><div><div className="gs-eyebrow">ONE GREEN SKILLS IDENTITY</div><h2>LIFEWS Skills Passport™</h2><p>Courses, competencies, badges, certificates, projects, field hours, supervisor verification and transitions remain connected to one participant record as they move through LIFEWS.</p></div><div className="gs-passport-fields">{["Courses","Competencies","Projects","Badges","Certificates","Field hours","Portfolio evidence","Transitions"].map((item) => <span key={item}>{item}</span>)}</div></section>
-
-        <footer className="gs-footer"><img src="/lifews-mark.svg" alt="LIFEWS"/><div><strong>LIFEWS GreenSkills™</strong><span>Skills for Food • Energy • Water • Livelihoods</span></div></footer>
-      </main>
-    </div>
-  );
+ const params=searchParams?await searchParams:{}; const language=normalizeLanguage(params.lang); const rtl=language==="ar";
+ return <div className="gs-shell" dir={rtl?"rtl":"ltr"}><aside className="gs-sidebar"><Link href={localizeHref("/",language)} className="gs-brand"><img src="/lifews-mark.svg" alt="LIFEWS" className="gs-brand-mark"/><div><strong>LIFEWS</strong><span>GreenSkills</span><small>{GREEN_SKILLS_TAGLINE}</small></div></Link><LanguageMenu currentLanguage={language}/><nav className="gs-nav"><Link className="active" href={localizeHref("/",language)}>GreenSkills Home</Link><Link href={localizeHref("/pathways",language)}>Pathways</Link><Link href={localizeHref("/kadara",language)}>Kadara</Link><Link href={localizeHref("/greentech",language)}>GreenTech</Link><a href="#shared-systems">Skills Passport</a><a href="#shared-systems">FieldWorks</a></nav><div className="gs-sidebar-footer"><span>LEARN</span><span>•</span><span>PRACTICE</span><span>•</span><span>BUILD</span><span>•</span><span>THRIVE</span></div></aside><main className="gs-main">
+ <header className="gs-hero"><div className="gs-eyebrow">A LIFEWS CAPABILITY PLATFORM</div><h1>Skills that move people<br/><span>from learning to livelihood.</span></h1><p className="gs-hero-tagline">{GREEN_SKILLS_TAGLINE}</p><p className="gs-hero-copy">{GREEN_SKILLS_NAME} connects inclusive learning, practical livelihood skills and advanced technical training through three distinct programs and one shared skills identity.</p><div className="gs-hero-actions"><a className="gs-button gs-button-primary" href="#programs">Explore programs</a><Link className="gs-button gs-button-secondary" href={localizeHref("/login",language)}>Staff sign in</Link></div></header>
+ <section className="gs-journey">{GREEN_SKILLS_JOURNEY.map((step,index)=><div className="gs-journey-item" key={step}><span>{step}</span>{index<GREEN_SKILLS_JOURNEY.length-1&&<b>→</b>}</div>)}</section>
+ <section id="programs" className="gs-section"><div className="gs-section-heading"><div><div className="gs-eyebrow">THREE PROGRAMS. ONE SYSTEM.</div><h2>Choose the pathway that matches the learner.</h2></div><p>Participants do not have to pass through all three programs. They enter at the level appropriate to age, prior learning, goals and demonstrated competence.</p></div><div className="gs-program-grid">{greenSkillsPrograms.map(program=><article className={`gs-program-card gs-program-${program.id}`} key={program.id}><div className="gs-program-top"><span className="gs-program-number">{program.number}</span><span className="gs-program-eyebrow">{program.eyebrow}</span></div><h3>{program.shortName}</h3><strong className="gs-program-tagline">{program.tagline}</strong><p>{program.purpose}</p><div className="gs-theme-list">{program.themes.slice(0,6).map(theme=><span key={theme}>{theme}</span>)}</div><Link className="gs-program-link" href={localizeHref(program.href,language)}>{program.action} →</Link></article>)}</div></section>
+ <section className="gs-progression-section"><div className="gs-eyebrow">FLEXIBLE ENTRY. VERIFIED PROGRESSION.</div><h2>One ecosystem, multiple routes.</h2><div className="gs-route-grid"><article><span>YOUNGER LEARNER</span><strong>Pathways → Education</strong><p>Foundational learning followed by formal-school re-entry, approved alternative education or continuing learning.</p></article><article><span>OLDER ADOLESCENT</span><strong>Pathways → Kadara</strong><p>Inclusive learning followed by vocational competence, employability and livelihood development.</p></article><article><span>TECHNICAL ROUTE</span><strong>Kadara → GreenTech</strong><p>Occupational foundations followed by advanced FEW-system technical training, practical assessment and certification.</p></article><article><span>DIRECT ENTRY</span><strong>Kadara or GreenTech</strong><p>Eligible youth, artisans, technicians and graduates can enter at an appropriate competency level without completing Pathways first.</p></article></div></section>
+ <section id="shared-systems" className="gs-shared-section"><div className="gs-section-heading"><div><div className="gs-eyebrow">SHARED INFRASTRUCTURE</div><h2>What connects the three programs.</h2></div><p>GreenSkills develops capability. AgriHubs provide places to practise. LIFEWS systems provide equipment. CHIPU supports monitoring and intelligence.</p></div><div className="gs-shared-grid">{sharedGreenSkillsSystems.map(system=><article key={system.name}><h3>{system.name}</h3><p>{system.description}</p></article>)}</div></section>
+ <section className="gs-passport-band"><div><div className="gs-eyebrow">ONE GREEN SKILLS IDENTITY</div><h2>LIFEWS Skills Passport</h2><p>Courses, competencies, badges, certificates, projects, field hours, supervisor verification and transitions remain connected to one participant record.</p></div><div className="gs-passport-fields">{["Courses","Competencies","Projects","Badges","Certificates","Field hours","Portfolio evidence","Transitions"].map(item=><span key={item}>{item}</span>)}</div></section>
+ <footer className="gs-footer"><img src="/lifews-mark.svg" alt="LIFEWS"/><div><strong>LIFEWS GreenSkills</strong><span>Skills for Food • Energy • Water • Livelihoods</span></div></footer>
+ </main></div>;
 }
