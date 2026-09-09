@@ -18,12 +18,34 @@ export function LanguageMenu({ currentLanguage }: { currentLanguage: AppLanguage
   }
 
   return (
-    <label className="language-menu">
-      <span>Language</span>
+    <label
+      className="language-menu"
+      style={{
+        display: "grid",
+        gap: 6,
+        marginTop: 18,
+        maxWidth: 220,
+        fontSize: ".78rem",
+        fontWeight: 800,
+      }}
+    >
+      <span style={{ color: "#fdb515", letterSpacing: ".06em", textTransform: "uppercase" }}>
+        Language
+      </span>
       <select
         aria-label="Choose language"
         value={currentLanguage}
         onChange={(event) => changeLanguage(event.target.value as AppLanguage)}
+        style={{
+          width: "100%",
+          minHeight: 40,
+          borderRadius: 9,
+          border: "1px solid #d9e3dc",
+          padding: "8px 10px",
+          background: "#fffdf7",
+          color: "#242a27",
+          fontWeight: 700,
+        }}
       >
         {supportedLanguages.map((language) => (
           <option value={language.code} key={language.code}>
