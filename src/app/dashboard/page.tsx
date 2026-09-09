@@ -33,13 +33,13 @@ export default async function DashboardPage() {
 
   const modules = [
     { href: "/dashboard/enrollment", title: "Enrollment & baseline", description: "Register learners, guardians and starting competency levels." },
-    { href: "/dashboard/participants", title: "Participant register", description: "Find learner profiles, placement, progress and Pathways Passport™ records." },
+    { href: "/dashboard/participants", title: "Participant register", description: "Find learner profiles, placement, progress and Pathways Passport records." },
     { href: "/dashboard/attendance", title: "Attendance & re-engagement", description: "Record sessions, attendance and supportive absence follow-up." },
     { href: "/dashboard/curriculum", title: "Curriculum", description: "Browse the 12 learning domains and developmental-band modules." },
     { href: "/dashboard/learning", title: "Learning evidence", description: "Record assessments, knowledge checks and competency evidence." },
-    { href: "/dashboard/growmeal", title: "GrowMeal™", description: "Use the 12-station garden as a practical learning laboratory." },
-    { href: "/dashboard/food-discovery", title: "Food Discovery Lab™", description: "Run supervised ingredient, label and food-system learning activities." },
-    { href: "/dashboard/passport", title: "Pathways Passport™", description: "Manage goals, projects, badges and demonstrated competencies." },
+    { href: "/dashboard/growmeal", title: "GrowMeal", description: "Use the 12-station garden as a practical learning laboratory." },
+    { href: "/dashboard/food-discovery", title: "Food Discovery Lab", description: "Run supervised ingredient, label and food-system learning activities." },
+    { href: "/dashboard/passport", title: "Pathways Passport", description: "Manage goals, projects, badges and demonstrated competencies." },
     { href: "/dashboard/offline", title: "Offline & sync", description: "Review connectivity and field records waiting for secure synchronization." },
   ];
 
@@ -47,7 +47,7 @@ export default async function DashboardPage() {
     <main className="main">
       <div className="topbar">
         <div>
-          <div className="eyebrow">LIFEWS Pathways™</div>
+          <div className="eyebrow">LIFEWS Pathways</div>
           <h1>Operational dashboard</h1>
           <p className="subtitle">Authenticated workspace for learning, safeguarding, transition and program management.</p>
         </div>
@@ -74,7 +74,7 @@ export default async function DashboardPage() {
           {analyticsVisible ? (
             <Link href="/dashboard/analytics" className="card" style={{ display: "block", borderLeft: "4px solid var(--green)" }}>
               <h2>Program analytics & KPIs</h2>
-              <p className="subtitle">Track participation, learning progression, GrowMeal™, badges, verified transitions and 3/6/12-month retention.</p>
+              <p className="subtitle">Track participation, learning progression, GrowMeal, badges, verified transitions and 3/6/12-month retention.</p>
             </Link>
           ) : null}
 
