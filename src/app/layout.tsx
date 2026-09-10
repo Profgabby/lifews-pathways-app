@@ -5,15 +5,15 @@ import "./greenskills.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "LIFEWS GreenSkills™",
-    template: "%s | LIFEWS GreenSkills™",
+    default: "LIFEWS GreenSkills",
+    template: "%s | LIFEWS GreenSkills",
   },
-  description: "LIFEWS GreenSkills™ connects inclusive learning, vocational livelihoods and technical food-energy-water skills through Pathways™, Kadara™ and GreenTech™.",
-  applicationName: "LIFEWS GreenSkills™",
+  description: "LIFEWS GreenSkills connects inclusive learning, vocational livelihoods and technical food-energy-water skills through Pathways, Kadara and GreenTech.",
+  applicationName: "LIFEWS GreenSkills",
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
-    title: "LIFEWS GreenSkills™",
+    title: "LIFEWS GreenSkills",
     statusBarStyle: "default",
   },
 };

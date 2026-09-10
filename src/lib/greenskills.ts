@@ -15,7 +15,7 @@ export type GreenSkillsProgram = {
   themes: string[];
 };
 
-export const GREEN_SKILLS_NAME = "LIFEWS GreenSkills™";
+export const GREEN_SKILLS_NAME = "LIFEWS GreenSkills";
 export const GREEN_SKILLS_TAGLINE = "Skills for Food • Energy • Water • Livelihoods";
 export const GREEN_SKILLS_JOURNEY = ["LEARN", "PRACTICE", "CERTIFY", "WORK", "BUILD", "THRIVE"] as const;
 
@@ -23,8 +23,8 @@ export const greenSkillsPrograms: GreenSkillsProgram[] = [
   {
     id: "pathways",
     number: "01",
-    name: "LIFEWS Pathways™",
-    shortName: "PATHWAYS™",
+    name: "LIFEWS Pathways",
+    shortName: "PATHWAYS",
     eyebrow: "LEARNING & TRANSITION",
     tagline: "From Learning to Opportunity",
     purpose: "An inclusive learning and transition program creating flexible routes back into education, skills and future opportunity.",
@@ -37,8 +37,8 @@ export const greenSkillsPrograms: GreenSkillsProgram[] = [
   {
     id: "kadara",
     number: "02",
-    name: "LIFEWS Kadara™",
-    shortName: "KADARA™",
+    name: "LIFEWS Kadara",
+    shortName: "KADARA",
     eyebrow: "SKILLS, WORK & ENTERPRISE",
     tagline: "Learn. Build. Earn.",
     purpose: "A vocational, employability and enterprise pathway helping older adolescents and young adults build practical skills and sustainable livelihoods.",
@@ -51,8 +51,8 @@ export const greenSkillsPrograms: GreenSkillsProgram[] = [
   {
     id: "greentech",
     number: "03",
-    name: "LIFEWS GreenTech™",
-    shortName: "GREENTECH™",
+    name: "LIFEWS GreenTech",
+    shortName: "GREENTECH",
     eyebrow: "TECHNICAL TRAINING & CERTIFICATION",
     tagline: "Train. Certify. Deploy.",
     purpose: "Competency-based technical training for the installation, operation and maintenance of integrated food-energy-water systems.",
@@ -65,10 +65,10 @@ export const greenSkillsPrograms: GreenSkillsProgram[] = [
 ];
 
 export const sharedGreenSkillsSystems = [
-  { name: "LIFEWS Skills Passport™", description: "One lifelong record for courses, competencies, projects, badges, certificates, verified practice and transitions." },
-  { name: "FieldWorks™", description: "Verified practical assignments, workplace learning, apprenticeships, field hours and supervisor evidence." },
-  { name: "LIFEWS AgriHubs™", description: "Physical training, demonstration and community practice infrastructure." },
-  { name: "Grow Systems™", description: "GrowMeal™, GrowFlow™, GrowFloat™, GrowAqua™, GrowFarm™ and GrowPower™ learning and production systems." },
-  { name: "LIFEWS FEW™ Products", description: "Deployable engineered food-energy-water systems used for technical learning and field deployment." },
-  { name: "CHIPU™", description: "Monitoring, controls and system-intelligence layer supporting practical FEW-system training." },
+  { name: "LIFEWS Skills Passport", description: "One lifelong record for courses, competencies, projects, badges, certificates, verified practice and transitions." },
+  { name: "FieldWorks", description: "Verified practical assignments, workplace learning, apprenticeships, field hours and supervisor evidence." },
+  { name: "LIFEWS AgriHubs", description: "Physical training, demonstration and community practice infrastructure." },
+  { name: "Grow Systems", description: "GrowMeal, GrowFlow, GrowFloat, GrowAqua, GrowFarm and GrowPower learning and production systems." },
+  { name: "LIFEWS FEW Products", description: "Deployable engineered food-energy-water systems used for technical learning and field deployment." },
+  { name: "CHIPU", description: "Monitoring, controls and system-intelligence layer supporting practical FEW-system training." },
 ] as const;
