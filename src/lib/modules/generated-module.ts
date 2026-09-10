@@ -1,26 +1,26 @@
 import type { AppLanguage } from "@/lib/i18n6";
 import { curriculumPrograms, type CurriculumLesson, type CurriculumProgram } from "@/lib/curriculum";
-import type { PF01Module } from "./pathways-foundation/pf-01";
+import type { PF01Lesson, PF01Module } from "./pathways-foundation/pf-01";
 
 export type FullGeneratedModule = Omit<PF01Module,"code"> & { code:string };
-
+type QuizItem = PF01Lesson["quiz"][number];
 const stageLabels = ["Explore and connect","Build core knowledge","Practice the skill","Measure and use evidence","Apply AI and enterprise thinking","Complete the challenge"];
 
-function quiz(topic:string, competency:string, n:number) {
- const stems = [
+function quiz(topic:string, competency:string, n:number):QuizItem {
+ const stems:Array<[string,string[]]>=[
   [`What is the best first step when learning about ${topic}?`,["Observe the task and identify what you need to know","Skip the instructions","Guess without evidence","Avoid the practical work"]],
-  [`Which action best demonstrates this module's competency?`,[competency,"Copying an unrelated answer","Ignoring safety rules","Completing no evidence"]],
-  [`What makes practical evidence trustworthy?`,["It is dated, observable and connected to the learner's own work","It is based only on a rumor","It has no connection to the task","It hides mistakes"]],
-  [`When a task does not work as expected, what should you do?`,["Check the evidence, identify the cause and improve the method","Hide the result","Repeat blindly","Blame the tools without checking"]],
+  ["Which action best demonstrates this module's competency?",[competency,"Copying an unrelated answer","Ignoring safety rules","Completing no evidence"]],
+  ["What makes practical evidence trustworthy?",["It is dated, observable and connected to the learner's own work","It is based only on a rumor","It has no connection to the task","It hides mistakes"]],
+  ["When a task does not work as expected, what should you do?",["Check the evidence, identify the cause and improve the method","Hide the result","Repeat blindly","Blame the tools without checking"]],
   [`How should AI be used in ${topic}?`,["As a supervised support tool whose outputs are checked against evidence and reliable guidance","As the only authority","To bypass practical work","To make unsafe decisions"]],
-  [`What is responsible enterprise thinking?`,["Understanding needs, value, resources, quality and safe delivery","Promising guaranteed income","Ignoring customers","Using resources without records"]],
+  ["What is responsible enterprise thinking?",["Understanding needs, value, resources, quality and safe delivery","Promising guaranteed income","Ignoring customers","Using resources without records"]],
  ];
  const [question,options]=stems[n%stems.length]; return {question,options,answer:0};
 }
 
-function buildLesson(module:CurriculumLesson, program:CurriculumProgram, i:number) {
+function buildLesson(module:CurriculumLesson, program:CurriculumProgram, i:number):PF01Lesson {
  const topic=module.title; const focus=stageLabels[i];
- const teachingSets=[
+ const teachingSets:string[][]=[
   [`Define ${topic} in familiar, local terms and connect it to everyday life.`,`Identify the people, materials, resources and systems involved in ${topic}.`,`Ask learners what they already know, what they have observed and what they still need to investigate.`],
   [`Break the competency into observable knowledge and skills: ${module.competency}`,`Use examples and non-examples so learners can distinguish correct practice from weak or unsafe practice.`,`Connect the topic to food, water, energy, practical work, community livelihoods or environmental stewardship where relevant.`],
   [`Demonstrate the task slowly before learners practise it in pairs or small groups.`,`Use the sequence PLAN → PREPARE → DO → CHECK → RECORD so practical work is repeatable.`,`Require safe tool, material, hygiene and site practices appropriate to the activity.`],
@@ -28,7 +28,9 @@ function buildLesson(module:CurriculumLesson, program:CurriculumProgram, i:numbe
   [`Use AI to generate a suggestion, explanation or comparison, then verify it against direct observation, calculations, trusted references or facilitator guidance.`,`Identify one user or customer need related to ${topic} and discuss what creates useful value.`,`Consider resources, quality, waste, safety, accessibility and responsible communication before recommending an action.`],
   [`Combine knowledge, practical skill, evidence, safety, enterprise thinking and teamwork in one supervised challenge.`,`Explain the work to another person using evidence rather than unsupported claims.`,`Reflect on what worked, what changed, what still needs practice and what the learner would do next time.`],
  ];
- return {id:`${module.code}-L${i+1}`,title:`${focus}: ${topic}`,objective:i===5?`Demonstrate the module competency through a complete evidence-based challenge: ${module.competency}`:`Develop ${focus.toLowerCase()} capability for ${topic}.`,teaching:teachingSets[i],activity:i===0?`Create a local example map for ${topic}. Identify at least five examples, resources, people or situations connected to the topic and discuss why each matters.`:i===1?`Complete a guided concept-sort: classify examples of ${topic} into correct, incorrect, safe, unsafe, efficient or inefficient practice and justify each decision.`:i===2?`Complete the core supervised practical for this module. Follow the demonstrated procedure, rotate team roles and record each completed step.`:i===3?`Repeat or inspect the practical task while collecting at least three observations or measurements. Organize the evidence in a simple table, checklist, diagram or work log.`:i===4?`Compare one evidence-based learner decision with an AI-generated suggestion. Verify the suggestion, then identify a responsible product, service, job role or community benefit connected to the topic.`:`Complete the module challenge: ${module.diy} Present the result, evidence, safety decisions, resource choices and one improvement.`,diy:i===5?module.diy:`Produce one portfolio artifact from this lesson: ${["concept map or labelled sketch","classification sheet","practical work record","measurement/data record","AI verification and value map","completed challenge evidence"][i]}.`,aiLayer:`AI Layer ${i+1} — ${["recognition and questioning","explanation and comparison","guided procedure checking","data interpretation","verification and responsible value design","reflection and improvement"][i]}. AI output must be checked; it does not replace supervision, safety rules or direct evidence.`,enterprise:`Enterprise lens — identify how ${topic.toLowerCase()} can create value through a product, service, skilled job or community solution. Learners consider users, quality, resources, records and responsible delivery; minors are not required to sell products or perform commercial work.`,quiz:[quiz(topic,module.competency,i*3),quiz(topic,module.competency,i*3+1),quiz(topic,module.competency,i*3+2)]};
+ const artifacts=["concept map or labelled sketch","classification sheet","practical work record","measurement/data record","AI verification and value map","completed challenge evidence"];
+ const aiNames=["recognition and questioning","explanation and comparison","guided procedure checking","data interpretation","verification and responsible value design","reflection and improvement"];
+ return {id:`${module.code}-L${i+1}`,title:`${focus}: ${topic}`,objective:i===5?`Demonstrate the module competency through a complete evidence-based challenge: ${module.competency}`:`Develop ${focus.toLowerCase()} capability for ${topic}.`,teaching:teachingSets[i],activity:i===0?`Create a local example map for ${topic}. Identify at least five examples, resources, people or situations connected to the topic and discuss why each matters.`:i===1?`Complete a guided concept-sort: classify examples of ${topic} into correct, incorrect, safe, unsafe, efficient or inefficient practice and justify each decision.`:i===2?`Complete the core supervised practical for this module. Follow the demonstrated procedure, rotate team roles and record each completed step.`:i===3?`Repeat or inspect the practical task while collecting at least three observations or measurements. Organize the evidence in a simple table, checklist, diagram or work log.`:i===4?`Compare one evidence-based learner decision with an AI-generated suggestion. Verify the suggestion, then identify a responsible product, service, job role or community benefit connected to the topic.`:`Complete the module challenge: ${module.diy} Present the result, evidence, safety decisions, resource choices and one improvement.`,diy:i===5?module.diy:`Produce one portfolio artifact from this lesson: ${artifacts[i]}.`,aiLayer:`AI Layer ${i+1} — ${aiNames[i]}. AI output must be checked; it does not replace supervision, safety rules or direct evidence.`,enterprise:`Enterprise lens — identify how ${topic.toLowerCase()} can create value through a product, service, skilled job or community solution. Learners consider users, quality, resources, records and responsible delivery; minors are not required to sell products or perform commercial work.`,quiz:[quiz(topic,module.competency,i*3),quiz(topic,module.competency,i*3+1),quiz(topic,module.competency,i*3+2)]};
 }
 
 export function generateFullModule(code:string, _language:AppLanguage):FullGeneratedModule|null {
