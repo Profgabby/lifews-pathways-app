@@ -25,10 +25,8 @@ function isLearnerArea(value: string): value is LearnerArea {
 }
 
 export default async function LearnerAreaPage({ params, searchParams }: LearnerAreaPageProps) {
-  const [{ area }, query] = await Promise.all([
-    params,
-    searchParams ?? Promise.resolve({}),
-  ]);
+  const { area } = await params;
+  const query: { lang?: string } = searchParams ? await searchParams : {};
 
   if (!isLearnerArea(area)) notFound();
 
