@@ -1,21 +1,24 @@
 import type { AppLanguage } from "@/lib/i18n6";
+import { curriculumPrograms } from "@/lib/curriculum";
 import type { PF01Module } from "@/lib/modules/pathways-foundation/pf-01";
 import { getPF01 } from "@/lib/modules/pathways-foundation/pf-01";
 import { getPF02 } from "@/lib/modules/pathways-foundation/pf-02";
 import { getPF03 } from "@/lib/modules/pathways-foundation/pf-03";
 import { getPF04 } from "@/lib/modules/pathways-foundation/pf-04";
+import { generateFullModule } from "@/lib/modules/generated-module";
 
 export type FullCurriculumModule = PF01Module | (Omit<PF01Module,"code"> & { code:string });
 
-const moduleGetters: Record<string,(language:AppLanguage)=>FullCurriculumModule> = {
+const authoredModuleGetters: Record<string,(language:AppLanguage)=>FullCurriculumModule> = {
   "PF-01": getPF01,
   "PF-02": getPF02,
   "PF-03": getPF03,
   "PF-04": getPF04,
 };
 
-export const developedModuleCodes = Object.freeze(Object.keys(moduleGetters));
+export const developedModuleCodes = Object.freeze(curriculumPrograms.flatMap(program=>program.lessons.map(lesson=>lesson.code)));
 
 export function getFullCurriculumModule(code:string, language:AppLanguage): FullCurriculumModule | null {
-  return moduleGetters[code.toUpperCase()]?.(language) ?? null;
+  const normalized=code.toUpperCase();
+  return authoredModuleGetters[normalized]?.(language) ?? generateFullModule(normalized,language);
 }
