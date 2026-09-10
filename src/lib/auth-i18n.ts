@@ -1,0 +1,10 @@
+import type { AppLanguage } from "@/lib/i18n6";
+
+export const staffLoginCopy = {
+  en: { title:"Staff workspace", intro:"Secure sign in for authorized staff and approved adult participants.", email:"Email", password:"Password", signIn:"Sign in", access:"Access is role-based. Safeguarding case data is restricted to explicitly authorized safeguarding personnel.", back:"Back to GreenSkills" },
+  ha: { title:"Wurin ma’aikata", intro:"Amintaccen shiga ga ma’aikatan da aka ba izini da manyan mahalarta da aka amince da su.", email:"Imel", password:"Kalmar sirri", signIn:"Shiga", access:"Samun dama yana bisa rawar aiki. Bayanai na kariyar yara suna iyakance ga ma’aikatan safeguarding da aka ba izini kai tsaye.", back:"Koma GreenSkills" },
+  ar: { title:"مساحة الموظفين", intro:"دخول آمن للموظفين المصرح لهم وللمشاركين البالغين المعتمدين.", email:"البريد الإلكتروني", password:"كلمة المرور", signIn:"تسجيل الدخول", access:"الوصول قائم على الأدوار. بيانات حالات الحماية مقصورة على موظفي الحماية المصرح لهم صراحةً.", back:"العودة إلى GreenSkills" },
+  yo: { title:"Àyè òṣìṣẹ́", intro:"Ìwọlé ààbò fún òṣìṣẹ́ tí a fún láṣẹ àti olukopa àgbà tí a fọwọ́ sí.", email:"Ímeèlì", password:"Ọ̀rọ̀ aṣínà", signIn:"Wọlé", access:"Ìwọlé dá lórí ipa iṣẹ́. Data safeguarding wà fún àwọn oṣiṣẹ safeguarding tí a fún láṣẹ péré.", back:"Padà sí GreenSkills" },
+  ig: { title:"Ebe ndị ọrụ", intro:"Nbanye echekwara maka ndị ọrụ enyere ikike na ndị sonyere toro eto a kwadoro.", email:"Email", password:"Okwuntughe", signIn:"Banye", access:"Nnweta dabere na ọrụ onye ọrụ. Data nchekwa mmadụ dị naanị maka ndị ọrụ safeguarding enyere ikike kpọmkwem.", back:"Laghachi na GreenSkills" },
+  fr: { title:"Espace du personnel", intro:"Connexion sécurisée pour le personnel autorisé et les participants adultes approuvés.", email:"E-mail", password:"Mot de passe", signIn:"Se connecter", access:"L’accès dépend du rôle. Les données de protection sont limitées au personnel de safeguarding explicitement autorisé.", back:"Retour à GreenSkills" },
+} as const satisfies Record<AppLanguage, Record<string,string>>;
