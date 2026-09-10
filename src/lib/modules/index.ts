@@ -13,6 +13,7 @@ import { getPF09 } from "@/lib/modules/pathways-foundation/pf-09";
 import { getPF10 } from "@/lib/modules/pathways-foundation/pf-10";
 import { getPF11 } from "@/lib/modules/pathways-foundation/pf-11";
 import { getPF12 } from "@/lib/modules/pathways-foundation/pf-12";
+import { getPE01 } from "@/lib/modules/pathways-explorer/pe-01";
 import { generateFullModule } from "@/lib/modules/generated-module";
 
 export type FullCurriculumModule = PF01Module | (Omit<PF01Module,"code"> & { code:string });
@@ -30,6 +31,7 @@ const authoredModuleGetters: Record<string,(language:AppLanguage)=>FullCurriculu
   "PF-10": getPF10,
   "PF-11": getPF11,
   "PF-12": getPF12,
+  "PE-01": getPE01,
 };
 
 export const developedModuleCodes = Object.freeze(curriculumPrograms.flatMap(program=>program.lessons.map(lesson=>lesson.code)));
