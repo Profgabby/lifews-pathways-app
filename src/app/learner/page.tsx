@@ -2,6 +2,15 @@ import Link from "next/link";
 import { LanguageMenu } from "@/components/language-menu";
 import { learnerCopy, localizeHref, normalizeLanguage } from "@/lib/i18n6";
 
+const learnerAreas = [
+  "learning",
+  "growmeal",
+  "food-discovery",
+  "passport",
+  "challenges",
+  "future",
+] as const;
+
 type LearnerPageProps = {
   searchParams?: Promise<{ lang?: string }>;
 };
@@ -13,7 +22,7 @@ export default async function LearnerPage({ searchParams }: LearnerPageProps) {
   const rtl = language === "ar";
 
   return (
-    <main className="learner-page" dir={rtl ? "rtl" : "ltr"}>
+    <main className="learner-page" dir={rtl ? "rtl" : "ltr"} lang={language}>
       <header className="learner-header">
         <Link className="learner-brand" href={localizeHref("/", language)}>
           <img src="/lifews-mark.svg" alt="LIFEWS logo" />
@@ -34,12 +43,16 @@ export default async function LearnerPage({ searchParams }: LearnerPageProps) {
 
       <section className="learner-grid">
         {copy.areas.map(([title, description], index) => (
-          <article className={index % 3 === 1 ? "learner-tile gold-tile" : "learner-tile"} key={title}>
+          <Link
+            className={index % 3 === 1 ? "learner-tile gold-tile" : "learner-tile"}
+            href={localizeHref(`/learner/${learnerAreas[index]}`, language)}
+            key={title}
+          >
             <span className="tile-number">{String(index + 1).padStart(2, "0")}</span>
             <h2>{title}</h2>
             <p>{description}</p>
             <span className="tile-action">{copy.explore}</span>
-          </article>
+          </Link>
         ))}
       </section>
 
