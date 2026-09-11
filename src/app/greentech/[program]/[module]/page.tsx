@@ -1,10 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LanguageMenu } from "@/components/language-menu";
-import { aiLayers, commonAssessment, competencyDomains, getGreenTechModule } from "@/lib/greentech";
+import { aiLayers, commonAssessment, competencyDomains, getGreenTechModule, greenTechTiers } from "@/lib/greentech";
 import { localizeHref, normalizeLanguage } from "@/lib/i18n6";
 
 type PageProps = { params: Promise<{ program: string; module: string }>; searchParams?: Promise<{ lang?: string }> };
+
+export function generateStaticParams() {
+  return greenTechTiers.flatMap((tier) => tier.modules.map((module) => ({ program: tier.slug, module: module.code })));
+}
 
 export default async function GreenTechModulePage({ params, searchParams }: PageProps) {
   const { program, module: moduleCode } = await params;
@@ -25,7 +29,7 @@ export default async function GreenTechModulePage({ params, searchParams }: Page
     "Skills Passport update",
   ];
 
-  return <div className="program-page-shell">
+  return <div className="program-page-shell" lang={language} dir={language === "ar" ? "rtl" : "ltr"}>
     <header className="program-topbar">
       <Link href={localizeHref(`/greentech/${tier.slug}`, language)} className="program-brand-link"><img src="/lifews-mark.svg" alt="LIFEWS"/><div><strong>{module.code}</strong><span>{tier.title}</span></div></Link>
       <LanguageMenu currentLanguage={language}/>
