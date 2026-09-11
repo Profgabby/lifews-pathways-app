@@ -19,6 +19,7 @@ import { getPE03 } from "@/lib/modules/pathways-explorer/pe-03";
 import { getPE04 } from "@/lib/modules/pathways-explorer/pe-04";
 import { getPE05 } from "@/lib/modules/pathways-explorer/pe-05";
 import { getPE06 } from "@/lib/modules/pathways-explorer/pe-06";
+import { getPE07 } from "@/lib/modules/pathways-explorer/pe-07";
 import { generateFullModule } from "@/lib/modules/generated-module";
 
 export type FullCurriculumModule = PF01Module | (Omit<PF01Module,"code"> & { code:string });
@@ -42,6 +43,7 @@ const authoredModuleGetters: Record<string,(language:AppLanguage)=>FullCurriculu
   "PE-04": getPE04,
   "PE-05": getPE05,
   "PE-06": getPE06,
+  "PE-07": getPE07,
 };
 
 export const developedModuleCodes = Object.freeze(curriculumPrograms.flatMap(program=>program.lessons.map(lesson=>lesson.code)));
