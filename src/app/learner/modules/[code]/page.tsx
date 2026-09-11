@@ -13,6 +13,13 @@ function moduleStepHref(code: string, language: string, step: number) {
   return `/learner/modules/${code}?lang=${language}&step=${step}`;
 }
 
+function moduleProgram(code: string) {
+  const prefix = code.toUpperCase().split("-")[0];
+  if (["KS", "KW", "KE"].includes(prefix)) return { label: "Kadara", href: "/kadara", brand: "LIFEWS Kadara" };
+  if (["GF", "GT2", "GA"].includes(prefix)) return { label: "GreenTech", href: "/greentech", brand: "LIFEWS GreenTech" };
+  return { label: "Pathways", href: "/pathways", brand: "LIFEWS Pathways" };
+}
+
 export default async function ModulePage({ params, searchParams }: PageProps) {
   const { code } = await params;
   const query = searchParams ? await searchParams : {};
@@ -23,6 +30,7 @@ export default async function ModulePage({ params, searchParams }: PageProps) {
   const requestedStep = Number.parseInt(query.step ?? "1", 10);
   const step = Number.isFinite(requestedStep) ? Math.min(7, Math.max(1, requestedStep)) : 1;
   const rtl = language === "ar";
+  const program = moduleProgram(module.code);
 
   // Standard learner flow: five learning sections, one assessment section and one DIY/practical section.
   // Existing authored modules contain six guided lessons. To preserve every authored lesson without
@@ -48,14 +56,14 @@ export default async function ModulePage({ params, searchParams }: PageProps) {
 
   return <main className="learner-page module-slide-page" dir={rtl ? "rtl" : "ltr"} lang={language}>
     <header className="learner-header module-header">
-      <Link className="learner-brand" href={localizeHref("/pathways", language)}>
+      <Link className="learner-brand" href={localizeHref(program.href, language)}>
         <img src="/lifews-mark.svg" alt="LIFEWS logo"/>
-        <div><strong>LIFEWS Pathways</strong><span>{module.level}</span></div>
+        <div><strong>{program.brand}</strong><span>{module.level}</span></div>
       </Link>
       <div className="learner-header-actions module-header-actions">
         <LanguageMenu currentLanguage={language}/>
         <Link className="text-link" href={localizeHref("/", language)}>GreenSkills Home</Link>
-        <Link className="text-link" href={localizeHref("/pathways", language)}>Pathways</Link>
+        <Link className="text-link" href={localizeHref(program.href, language)}>{program.label}</Link>
         <Link className="text-link" href={localizeHref("/learner", language)}>Learner Space</Link>
       </div>
     </header>
@@ -146,7 +154,7 @@ export default async function ModulePage({ params, searchParams }: PageProps) {
 
     <footer className="module-footer-links">
       <Link href={localizeHref("/", language)}>GreenSkills Home</Link>
-      <Link href={localizeHref("/pathways", language)}>Back to Pathways curriculum</Link>
+      <Link href={localizeHref(program.href, language)}>Back to {program.label} curriculum</Link>
       <Link href={localizeHref("/learner", language)}>Learner Space</Link>
     </footer>
   </main>;
