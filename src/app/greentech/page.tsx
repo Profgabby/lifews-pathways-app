@@ -9,7 +9,7 @@ export default async function GreenTechPage({ searchParams }: PageProps) {
   const params = searchParams ? await searchParams : {};
   const language = normalizeLanguage(params.lang);
 
-  return <div className="program-page-shell">
+  return <div className="program-page-shell" lang={language} dir={language === "ar" ? "rtl" : "ltr"}>
     <header className="program-topbar">
       <Link href={localizeHref("/", language)} className="program-brand-link">
         <img src="/lifews-mark.svg" alt="LIFEWS"/>
