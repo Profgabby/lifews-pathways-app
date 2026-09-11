@@ -1,10 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LanguageMenu } from "@/components/language-menu";
-import { commonAssessment, getGreenTechTier } from "@/lib/greentech";
+import { commonAssessment, getGreenTechTier, greenTechTiers } from "@/lib/greentech";
 import { localizeHref, normalizeLanguage } from "@/lib/i18n6";
 
 type PageProps = { params: Promise<{ program: string }>; searchParams?: Promise<{ lang?: string }> };
+
+export function generateStaticParams() {
+  return greenTechTiers.map((tier) => ({ program: tier.slug }));
+}
 
 export default async function GreenTechProgramPage({ params, searchParams }: PageProps) {
   const { program } = await params;
@@ -13,7 +17,7 @@ export default async function GreenTechProgramPage({ params, searchParams }: Pag
   const tier = getGreenTechTier(program);
   if (!tier) notFound();
 
-  return <div className="program-page-shell">
+  return <div className="program-page-shell" lang={language} dir={language === "ar" ? "rtl" : "ltr"}>
     <header className="program-topbar">
       <Link href={localizeHref("/greentech", language)} className="program-brand-link"><img src="/lifews-mark.svg" alt="LIFEWS"/><div><strong>LIFEWS GreenTech</strong><span>{tier.title}</span></div></Link>
       <LanguageMenu currentLanguage={language}/>
