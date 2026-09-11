@@ -34,11 +34,14 @@ import { getPT06 } from "@/lib/modules/pathways-transition/pt-06";
 import { getPT07 } from "@/lib/modules/pathways-transition/pt-07";
 import { getPT08 } from "@/lib/modules/pathways-transition/pt-08";
 import { getPT09 } from "@/lib/modules/pathways-transition/pt-09";
+import { getPT10 } from "@/lib/modules/pathways-transition/pt-10";
+import { getPT11 } from "@/lib/modules/pathways-transition/pt-11";
+import { getPT12 } from "@/lib/modules/pathways-transition/pt-12";
 import { generateFullModule } from "@/lib/modules/generated-module";
 export type FullCurriculumModule=PF01Module|(Omit<PF01Module,"code">&{code:string});
 const authoredModuleGetters:Record<string,(language:AppLanguage)=>FullCurriculumModule>={
 "PF-01":getPF01,"PF-02":getPF02,"PF-03":getPF03,"PF-04":getPF04,"PF-05":getPF05,"PF-06":getPF06,"PF-07":getPF07,"PF-08":getPF08,"PF-09":getPF09,"PF-10":getPF10,"PF-11":getPF11,"PF-12":getPF12,
 "PE-01":getPE01,"PE-02":getPE02,"PE-03":getPE03,"PE-04":getPE04,"PE-05":getPE05,"PE-06":getPE06,"PE-07":getPE07,"PE-08":getPE08,"PE-09":getPE09,"PE-10":getPE10,"PE-11":getPE11,"PE-12":getPE12,
-"PT-01":getPT01,"PT-02":getPT02,"PT-03":getPT03,"PT-04":getPT04,"PT-05":getPT05,"PT-06":getPT06,"PT-07":getPT07,"PT-08":getPT08,"PT-09":getPT09};
+"PT-01":getPT01,"PT-02":getPT02,"PT-03":getPT03,"PT-04":getPT04,"PT-05":getPT05,"PT-06":getPT06,"PT-07":getPT07,"PT-08":getPT08,"PT-09":getPT09,"PT-10":getPT10,"PT-11":getPT11,"PT-12":getPT12};
 export const developedModuleCodes=Object.freeze(curriculumPrograms.flatMap(program=>program.lessons.map(lesson=>lesson.code)));
 export function getFullCurriculumModule(code:string,language:AppLanguage):FullCurriculumModule|null{const normalized=code.toUpperCase();return authoredModuleGetters[normalized]?.(language)??generateFullModule(normalized,language);}
