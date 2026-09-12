@@ -64,6 +64,9 @@ import { getKW12 } from "@/lib/modules/kadara-workforce/kw-12";
 import { getKE01 } from "@/lib/modules/kadara-enterprise/ke-01";
 import { getKE02 } from "@/lib/modules/kadara-enterprise/ke-02";
 import { getKE03 } from "@/lib/modules/kadara-enterprise/ke-03";
+import { getKE04 } from "@/lib/modules/kadara-enterprise/ke-04";
+import { getKE05 } from "@/lib/modules/kadara-enterprise/ke-05";
+import { getKE06 } from "@/lib/modules/kadara-enterprise/ke-06";
 import { generateFullModule } from "@/lib/modules/generated-module";
 export type FullCurriculumModule=PF01Module|(Omit<PF01Module,"code">&{code:string});
 const authoredModuleGetters:Record<string,(language:AppLanguage)=>FullCurriculumModule>={
@@ -72,6 +75,6 @@ const authoredModuleGetters:Record<string,(language:AppLanguage)=>FullCurriculum
 "PT-01":getPT01,"PT-02":getPT02,"PT-03":getPT03,"PT-04":getPT04,"PT-05":getPT05,"PT-06":getPT06,"PT-07":getPT07,"PT-08":getPT08,"PT-09":getPT09,"PT-10":getPT10,"PT-11":getPT11,"PT-12":getPT12,
 "KS-01":getKS01,"KS-02":getKS02,"KS-03":getKS03,"KS-04":getKS04,"KS-05":getKS05,"KS-06":getKS06,"KS-07":getKS07,"KS-08":getKS08,"KS-09":getKS09,"KS-10":getKS10,"KS-11":getKS11,"KS-12":getKS12,
 "KW-01":getKW01,"KW-02":getKW02,"KW-03":getKW03,"KW-04":getKW04,"KW-05":getKW05,"KW-06":getKW06,"KW-07":getKW07,"KW-08":getKW08,"KW-09":getKW09,"KW-10":getKW10,"KW-11":getKW11,"KW-12":getKW12,
-"KE-01":getKE01,"KE-02":getKE02,"KE-03":getKE03};
+"KE-01":getKE01,"KE-02":getKE02,"KE-03":getKE03,"KE-04":getKE04,"KE-05":getKE05,"KE-06":getKE06};
 export const developedModuleCodes=Object.freeze(curriculumPrograms.flatMap(program=>program.lessons.map(lesson=>lesson.code)));
 export function getFullCurriculumModule(code:string,language:AppLanguage):FullCurriculumModule|null{const normalized=code.toUpperCase();return authoredModuleGetters[normalized]?.(language)??generateFullModule(normalized,language);}
