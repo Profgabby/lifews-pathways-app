@@ -85,6 +85,9 @@ import { getGF09 } from "@/lib/modules/greentech-foundation-technician/gf-09";
 import { getGF10 } from "@/lib/modules/greentech-foundation-technician/gf-10";
 import { getGF11 } from "@/lib/modules/greentech-foundation-technician/gf-11";
 import { getGF12 } from "@/lib/modules/greentech-foundation-technician/gf-12";
+import { getGT201 } from "@/lib/modules/greentech-few-systems-technician/gt2-01";
+import { getGT202 } from "@/lib/modules/greentech-few-systems-technician/gt2-02";
+import { getGT203 } from "@/lib/modules/greentech-few-systems-technician/gt2-03";
 import { generateFullModule } from "@/lib/modules/generated-module";
 export type FullCurriculumModule=PF01Module|(Omit<PF01Module,"code">&{code:string});
 const authoredModuleGetters:Record<string,(language:AppLanguage)=>FullCurriculumModule>={
@@ -94,6 +97,7 @@ const authoredModuleGetters:Record<string,(language:AppLanguage)=>FullCurriculum
 "KS-01":getKS01,"KS-02":getKS02,"KS-03":getKS03,"KS-04":getKS04,"KS-05":getKS05,"KS-06":getKS06,"KS-07":getKS07,"KS-08":getKS08,"KS-09":getKS09,"KS-10":getKS10,"KS-11":getKS11,"KS-12":getKS12,
 "KW-01":getKW01,"KW-02":getKW02,"KW-03":getKW03,"KW-04":getKW04,"KW-05":getKW05,"KW-06":getKW06,"KW-07":getKW07,"KW-08":getKW08,"KW-09":getKW09,"KW-10":getKW10,"KW-11":getKW11,"KW-12":getKW12,
 "KE-01":getKE01,"KE-02":getKE02,"KE-03":getKE03,"KE-04":getKE04,"KE-05":getKE05,"KE-06":getKE06,"KE-07":getKE07,"KE-08":getKE08,"KE-09":getKE09,"KE-10":getKE10,"KE-11":getKE11,"KE-12":getKE12,
-"GF-01":getGF01,"GF-02":getGF02,"GF-03":getGF03,"GF-04":getGF04,"GF-05":getGF05,"GF-06":getGF06,"GF-07":getGF07,"GF-08":getGF08,"GF-09":getGF09,"GF-10":getGF10,"GF-11":getGF11,"GF-12":getGF12};
+"GF-01":getGF01,"GF-02":getGF02,"GF-03":getGF03,"GF-04":getGF04,"GF-05":getGF05,"GF-06":getGF06,"GF-07":getGF07,"GF-08":getGF08,"GF-09":getGF09,"GF-10":getGF10,"GF-11":getGF11,"GF-12":getGF12,
+"GT2-01":getGT201,"GT2-02":getGT202,"GT2-03":getGT203};
 export const developedModuleCodes=Object.freeze(curriculumPrograms.flatMap(program=>program.lessons.map(lesson=>lesson.code)));
 export function getFullCurriculumModule(code:string,language:AppLanguage):FullCurriculumModule|null{const normalized=code.toUpperCase();return authoredModuleGetters[normalized]?.(language)??generateFullModule(normalized,language);}
