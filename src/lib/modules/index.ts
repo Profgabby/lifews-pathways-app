@@ -2,6 +2,7 @@ import type { AppLanguage } from "@/lib/i18n6";
 import { curriculumPrograms } from "@/lib/curriculum";
 import type { PF01Module } from "@/lib/modules/pathways-foundation/pf-01";
 import { getPF01 } from "@/lib/modules/pathways-foundation/pf-01";
+import { pf01Yo } from "@/lib/modules/pathways-foundation/pf-01-yo";
 import { getPF02 } from "@/lib/modules/pathways-foundation/pf-02";
 import { getPF03 } from "@/lib/modules/pathways-foundation/pf-03";
 import { getPF04 } from "@/lib/modules/pathways-foundation/pf-04";
@@ -98,9 +99,10 @@ import { getGT210 } from "@/lib/modules/greentech-few-systems-technician/gt2-10"
 import { getGT211 } from "@/lib/modules/greentech-few-systems-technician/gt2-11";
 import { getGT212 } from "@/lib/modules/greentech-few-systems-technician/gt2-12";
 import { generateFullModule } from "@/lib/modules/generated-module";
+
 export type FullCurriculumModule=PF01Module|(Omit<PF01Module,"code">&{code:string});
 const authoredModuleGetters:Record<string,(language:AppLanguage)=>FullCurriculumModule>={
-"PF-01":getPF01,"PF-02":getPF02,"PF-03":getPF03,"PF-04":getPF04,"PF-05":getPF05,"PF-06":getPF06,"PF-07":getPF07,"PF-08":getPF08,"PF-09":getPF09,"PF-10":getPF10,"PF-11":getPF11,"PF-12":getPF12,
+"PF-01":language=>language==="yo"?pf01Yo:getPF01(language),"PF-02":getPF02,"PF-03":getPF03,"PF-04":getPF04,"PF-05":getPF05,"PF-06":getPF06,"PF-07":getPF07,"PF-08":getPF08,"PF-09":getPF09,"PF-10":getPF10,"PF-11":getPF11,"PF-12":getPF12,
 "PE-01":getPE01,"PE-02":getPE02,"PE-03":getPE03,"PE-04":getPE04,"PE-05":getPE05,"PE-06":getPE06,"PE-07":getPE07,"PE-08":getPE08,"PE-09":getPE09,"PE-10":getPE10,"PE-11":getPE11,"PE-12":getPE12,
 "PT-01":getPT01,"PT-02":getPT02,"PT-03":getPT03,"PT-04":getPT04,"PT-05":getPT05,"PT-06":getPT06,"PT-07":getPT07,"PT-08":getPT08,"PT-09":getPT09,"PT-10":getPT10,"PT-11":getPT11,"PT-12":getPT12,
 "KS-01":getKS01,"KS-02":getKS02,"KS-03":getKS03,"KS-04":getKS04,"KS-05":getKS05,"KS-06":getKS06,"KS-07":getKS07,"KS-08":getKS08,"KS-09":getKS09,"KS-10":getKS10,"KS-11":getKS11,"KS-12":getKS12,
