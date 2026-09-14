@@ -2,23 +2,8 @@ import type { AppLanguage } from "@/lib/i18n6";
 import { curriculumPrograms } from "@/lib/curriculum";
 import type { PF01Module } from "@/lib/modules/pathways-foundation/pf-01";
 import { getPF01 } from "@/lib/modules/pathways-foundation/pf-01";
-import { pf01Ar } from "@/lib/modules/pathways-foundation/pf-01-ar";
-import { pf01Fr } from "@/lib/modules/pathways-foundation/pf-01-fr";
-import { pf01Ha } from "@/lib/modules/pathways-foundation/pf-01-ha";
-import { pf01Ig } from "@/lib/modules/pathways-foundation/pf-01-ig";
-import { pf01Yo } from "@/lib/modules/pathways-foundation/pf-01-yo";
 import { getPF02 } from "@/lib/modules/pathways-foundation/pf-02";
-import { pf02Ar } from "@/lib/modules/pathways-foundation/pf-02-ar";
-import { pf02Fr } from "@/lib/modules/pathways-foundation/pf-02-fr";
-import { pf02Ha } from "@/lib/modules/pathways-foundation/pf-02-ha";
-import { pf02Ig } from "@/lib/modules/pathways-foundation/pf-02-ig";
-import { pf02Yo } from "@/lib/modules/pathways-foundation/pf-02-yo";
 import { getPF03 } from "@/lib/modules/pathways-foundation/pf-03";
-import { pf03Ar } from "@/lib/modules/pathways-foundation/pf-03-ar";
-import { pf03Fr } from "@/lib/modules/pathways-foundation/pf-03-fr";
-import { pf03Ha } from "@/lib/modules/pathways-foundation/pf-03-ha";
-import { pf03Ig } from "@/lib/modules/pathways-foundation/pf-03-ig";
-import { pf03Yo } from "@/lib/modules/pathways-foundation/pf-03-yo";
 import { getPF04 } from "@/lib/modules/pathways-foundation/pf-04";
 import { getPF05 } from "@/lib/modules/pathways-foundation/pf-05";
 import { getPF06 } from "@/lib/modules/pathways-foundation/pf-06";
@@ -28,6 +13,7 @@ import { getPF09 } from "@/lib/modules/pathways-foundation/pf-09";
 import { getPF10 } from "@/lib/modules/pathways-foundation/pf-10";
 import { getPF11 } from "@/lib/modules/pathways-foundation/pf-11";
 import { getPF12 } from "@/lib/modules/pathways-foundation/pf-12";
+import { getFoundationLocalizedModule } from "@/lib/modules/pathways-foundation/localized";
 import { getPE01 } from "@/lib/modules/pathways-explorer/pe-01";
 import { getPE02 } from "@/lib/modules/pathways-explorer/pe-02";
 import { getPE03 } from "@/lib/modules/pathways-explorer/pe-03";
@@ -121,11 +107,12 @@ import { getGA06 } from "@/lib/modules/greentech-advanced-systems/ga-06";
 import { generateFullModule } from "@/lib/modules/generated-module";
 
 export type FullCurriculumModule=PF01Module|(Omit<PF01Module,"code">&{code:string});
-const pf01Localized:Partial<Record<AppLanguage,PF01Module>>={ar:pf01Ar,fr:pf01Fr,ha:pf01Ha,ig:pf01Ig,yo:pf01Yo};
-const pf02Localized:Partial<Record<AppLanguage,FullCurriculumModule>>={ar:pf02Ar,fr:pf02Fr,ha:pf02Ha,ig:pf02Ig,yo:pf02Yo};
-const pf03Localized:Partial<Record<AppLanguage,FullCurriculumModule>>={ar:pf03Ar,fr:pf03Fr,ha:pf03Ha,ig:pf03Ig,yo:pf03Yo};
+
+const localizedFoundationGetter = (code:string, fallback:(language:AppLanguage)=>FullCurriculumModule) =>
+  (language:AppLanguage):FullCurriculumModule => getFoundationLocalizedModule(code,language) ?? fallback(language);
+
 const authoredModuleGetters:Record<string,(language:AppLanguage)=>FullCurriculumModule>={
-"PF-01":language=>pf01Localized[language]??getPF01(language),"PF-02":language=>pf02Localized[language]??getPF02(language),"PF-03":language=>pf03Localized[language]??getPF03(language),"PF-04":getPF04,"PF-05":getPF05,"PF-06":getPF06,"PF-07":getPF07,"PF-08":getPF08,"PF-09":getPF09,"PF-10":getPF10,"PF-11":getPF11,"PF-12":getPF12,
+"PF-01":localizedFoundationGetter("PF-01",getPF01),"PF-02":localizedFoundationGetter("PF-02",getPF02),"PF-03":localizedFoundationGetter("PF-03",getPF03),"PF-04":localizedFoundationGetter("PF-04",getPF04),"PF-05":getPF05,"PF-06":getPF06,"PF-07":getPF07,"PF-08":getPF08,"PF-09":getPF09,"PF-10":getPF10,"PF-11":getPF11,"PF-12":getPF12,
 "PE-01":getPE01,"PE-02":getPE02,"PE-03":getPE03,"PE-04":getPE04,"PE-05":getPE05,"PE-06":getPE06,"PE-07":getPE07,"PE-08":getPE08,"PE-09":getPE09,"PE-10":getPE10,"PE-11":getPE11,"PE-12":getPE12,
 "PT-01":getPT01,"PT-02":getPT02,"PT-03":getPT03,"PT-04":getPT04,"PT-05":getPT05,"PT-06":getPT06,"PT-07":getPT07,"PT-08":getPT08,"PT-09":getPT09,"PT-10":getPT10,"PT-11":getPT11,"PT-12":getPT12,
 "KS-01":getKS01,"KS-02":getKS02,"KS-03":getKS03,"KS-04":getKS04,"KS-05":getKS05,"KS-06":getKS06,"KS-07":getKS07,"KS-08":getKS08,"KS-09":getKS09,"KS-10":getKS10,"KS-11":getKS11,"KS-12":getKS12,
