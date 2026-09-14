@@ -1,0 +1,68 @@
+import type { PF01Module } from "./pf-01";
+
+type PF07Module = Omit<PF01Module,"code"> & { code:"PF-07" };
+
+export const pf07Ha: PF07Module = {
+  code:"PF-07",
+  title:"Abinci Yana Da Asali",
+  level:"Pathways Foundation",
+  age:"Kimanin shekaru 8–11; a daidaita misalai da abincin gida ba tare da nuna wani iyali ko al'umma a matsayin mafi kyau ko mafi muni ba.",
+  duration:"Darussa 6 masu jagoranci tare da taswirar asalin abinci, aikin lura da tantancewa",
+  fieldworkHours:3,
+  bigQuestion:"Daga ina abincinmu yake zuwa, me ke faruwa kafin ya iso gare mu, kuma ta yaya za mu yanke shawarar abinci cikin alhaki ta amfani da hujja?",
+  whyItMatters:"Abinci sakamakon tsarin halittu, zamantakewa da fasaha ne da ke hade da juna. Wannan darasi yana taimaka wa dalibai su gano asalin abinci zuwa tsirrai, dabbobi da wuraren samarwa, su fahimci matakan daga gona zuwa abinci, da yadda sarrafawa, sufuri da ajiya ke kara daraja da nauyi.",
+  outcomes:[
+    "Danganta abincin da aka saba da shi da asalin tsirrai, dabbobi ko hadadden asali.",
+    "Gano wuraren samar da abinci kamar gonaki, lambuna, gonakin 'ya'yan itatuwa, kiwon dabbobi da wuraren sarrafa abinci.",
+    "Bayyana saukin tsarin daga gona zuwa abinci ga akalla abinci uku na gida.",
+    "Bambance kayan abinci na asali da abincin da aka sarrafa.",
+    "Fahimtar cewa sarrafawa, sufuri, ajiya da shiri suna shafar inganci da aminci.",
+    "Kirkira da bayyana tafiyar abincin gida ta amfani da lura da hujja.",
+    "Duba ikirarin AI ko na dijital game da asalin abinci ta hanyar lakabi, kwararru ko amintattun bayanai.",
+    "Danganta ilimin tsarin abinci da sana'o'in noma, sarrafawa, kaya, sayarwa da hidima cikin alhaki."
+  ],
+  vocabulary:["abinci","sinadari","amfanin gona","dabbobi","gona","lambu","girbi","danye","sarrafawa","sufuri","ajiya","kasuwa","shiryawa","asali","tafiya","hujja"],
+  materials:["hotuna ko misalan abinci da sinadarai na gida","katunan asalin abinci","takarda da alkaluma","kwalaye marasa komai masu tsabta","katunan matakai daga gona zuwa abinci","taswirar gari ko zane","na'urar dijital karkashin kulawar malami idan akwai"],
+  safety:[
+    "Kada a tilasta wa dalibai dandana abinci a wannan darasi.",
+    "Yi amfani da misalai masu tsabta ko hotuna wajen ware abinci.",
+    "Duba yiwuwar rashin lafiyar abinci kafin taba ainihin abinci.",
+    "Kada yara su shiga wuraren injina, manyan dakunan girki ko kasuwanni ba tare da kulawar manya ba.",
+    "A tabbatar da duk shawarar aminci daga AI ko kafofin sada zumunta da ingantacciyar hanya.",
+    "Kada a raina ko a fifita al'adu da iyalai bisa nau'in abincin da suke ci."
+  ],
+  lessons:[
+    {id:"PF-07-L1",title:"Abinci Yana Da Asali",objective:"Danganta abinci da asalin tsirrai, dabbobi ko hadadden asali.",teaching:["Abinci da yawa yana farawa daga tsirrai, dabbobi ko duka biyun.","Abinci na iya canza kamanni bayan shiri ko sarrafawa.","Sanin asalin abinci yana taimaka mana mu fahimci noma, abinci mai gina jiki, aminci da sana'o'i."],activity:"Raba katunan abinci zuwa TSIRRAI, DABBOBI da HADADDE, sannan a bayyana dalilin zabi.",diy:"Kirkiri allon Asalin Abinci da akalla abinci takwas tare da kibiyoyi zuwa tushensu.",aiLayer:"AI Mataki na 1 — Ganewa: malami ya nuna yadda AI ke rarraba abinci, sannan dalibai su tabbatar da amsoshin da lakabi ko sanin gida.",enterprise:"Manoma, masu kiwo, masunta da masu sarrafa abinci suna kara daraja a matakai daban-daban.",quiz:[{question:"Masara tana fitowa ne daga…",options:["Tsiro","Inji","Batir","Ma'adani"],answer:0},{question:"Madara tana fitowa ne daga…",options:["Dabbobi","Duwatsu","Roba","Kasa kadai"],answer:0},{question:"Me yasa muke koyon asalin abinci?",options:["Don fahimtar samarwa da sarrafawa","Don haddace launin kwalba kawai","Don daina tambaya","Don nuna al'ada daya ta fi"],answer:0}]},
+    {id:"PF-07-L2",title:"Inda Ake Samar da Abinci",objective:"Gano wuraren da ake noma, kiwo, kamun kifi ko sarrafa abinci.",teaching:["Abinci na iya zuwa daga gonaki, lambuna, gonakin 'ya'yan itatuwa, kiwo, kamun kifi da sauran wurare.","Abinci daban-daban yana bukatar albarkatu da kulawa daban-daban.","Wuraren samarwa suna hade da ruwa, kasa, makamashi, aiki da yanayi."],activity:"Daidaita abinci da wurin samar da shi a taswirar hoto.",diy:"Zana taswirar tushen abincin al'umma da akalla wurare biyar.",aiLayer:"AI Mataki na 2 — Kwatance: kwatanta jerin wuraren samar da abinci na AI da gaskiyar wurin ku.",enterprise:"Samar da abinci yana tallafa wa ayyukan noma, ban-ruwa, kiwon dabbobi, sufuri da gyara kayan aiki.",quiz:[{question:"Wanne ne wurin samar da abinci?",options:["Lambu","Allon kalmar sirri","Akwatin takalmi","Fitilar titi"],answer:0},{question:"Duk abinci yana amfani da tsarin samarwa iri daya?",options:["A'a","Eh koyaushe","Sai a birni","Sai idan an kwashe shi"],answer:0},{question:"Samar da abinci yana dogaro da…",options:["Albarkatu kamar ruwa da kasa","Babu albarkatu","Talla kawai","Kwalaye kawai"],answer:0}]},
+    {id:"PF-07-L3",title:"Daga Kayan Abinci Zuwa Samfuri",objective:"Bambance kayan abinci na asali da abincin da aka sarrafa.",teaching:["Kayan abinci na asali abu ne kafin manyan matakan shiri ko sarrafawa.","Sarrafawa na iya hada da wankewa, yankewa, busarwa, nika, dafa, hadawa ko kwashewa.","Sarrafawa na iya kara sauki da adanawa, amma dole ne cikin tsabta da aminci."],activity:"Yi nau'i-nau'i kamar masara → gari, rogo → garri, madara → yogurt ko tumatir → miya.",diy:"Gina jadawali: KAYAN ASALI → TSARI → SAMFURI ga abinci biyar.",aiLayer:"AI Mataki na 3 — Tsara matakai: a duba jerin matakan AI, a gano wadanda suke daidai, bace ko marasa aminci.",enterprise:"Sarrafawa yana kara daraja idan ana kiyaye inganci, tsafta da bayanai na gaskiya.",quiz:[{question:"Wanne mataki ne na sarrafawa?",options:["Nika","Hasashe kawai","Boye lakabi","Watsi da tsafta"],answer:0},{question:"Kayan abinci na asali na iya zama…",options:["Samfurin da aka sarrafa","Kalmar sirri","Wutar lantarki kadai","Teburin makaranta"],answer:0},{question:"Sarrafawa ya kamata ya hada da…",options:["Tsabta da kula da inganci","Gajerun hanyoyi marasa aminci","Babu rubuce-rubuce","Sinadarai da ba a sani ba"],answer:0}]},
+    {id:"PF-07-L4",title:"Tafiyar Abinci",objective:"Tsara manyan matakan da abinci ke bi daga samarwa zuwa ci.",teaching:["Tafiyar abinci na iya hada da samarwa, girbi, sarrafawa, sufuri, ajiya, rarrabawa, shiri da ci.","Ba kowane abinci ke bin tafiya iri daya ba.","Kowane mataki na iya shafar inganci, aminci, asara da kudi."],activity:"Shirya katunan matakai a tsarin da ya dace ga abinci guda daya.",diy:"Kirkiri zane mai matakai shida na Daga Gona Zuwa Abinci.",aiLayer:"AI Mataki na 4 — Taswirar tsari: kwatanta tafiyar ku da shawarar AI, ku gano gibba ko hasashe marasa tushe.",enterprise:"Akwai sana'o'i da dama a tafiyar abinci: samarwa, sarrafawa, sufuri, ajiya, sayarwa da tabbatar da inganci.",quiz:[{question:"Kafin abinci ya isa mabukaci yawanci…",options:["Yana bi ta matakai da dama","Babu abin da ke faruwa","Talla kawai","Kwali kawai"],answer:0},{question:"Duk abinci yana bin tafiya iri daya?",options:["A'a","Eh","Sai kayan waje","Sai abin sha"],answer:0},{question:"Me yasa matakai suke da muhimmanci?",options:["Suna shafar inganci, aminci, asara da kudi","Ba su da tasiri","Suna canza launi kawai","Suna cire bukatar tsafta"],answer:0}]},
+    {id:"PF-07-L5",title:"Sarrafawa, Ajiya da Rage Asara",objective:"Gano ayyukan da ke kare ingancin abinci da rage asara.",teaching:["Abinci na iya lalacewa saboda rashin kulawa, barna ko ajiya mara kyau.","Tsabta, ajiya mai dacewa da sufuri mai kyau suna kare inganci.","Rage asara yana mutunta ruwa, makamashi, aiki da kasa da aka yi amfani da su."],activity:"Duba hotunan sarrafa abinci mai kyau da mara kyau, a gano inda lalacewa ko gurbatawa ka iya faruwa.",diy:"Kirkiri Jerin Kula da Abinci mai matakai biyar.",aiLayer:"AI Mataki na 5 — Tallafin yanke shawara: kwatanta shawarar ajiya ta AI da ka'idojin malami, a ki duk abin da ba a tabbatar da shi ba.",enterprise:"Rage lalacewa yana inganta inganci da amfani da albarkatu a harkokin abinci.",quiz:[{question:"Me zai rage asarar abinci?",options:["Kulawa da ajiya mai dacewa","Lalata kayan amfanin gona","Barin abinci a yanayi mara aminci","Watsi da rubewa"],answer:0},{question:"Me yasa asarar abinci ta shafi ruwa da makamashi?",options:["An yi amfani da su wajen samarwa da sarrafawa","Abinci yana dauke da wuta","Kwali ne ke samar da duk albarkatu","Ba ta da tasiri"],answer:0},{question:"AI kadai zai yanke hukuncin ko abinci ya dace a ci?",options:["A'a","Eh koyaushe","Sai idan hoton ya fito sosai","Sai idan yana da tsada"],answer:0}]},
+    {id:"PF-07-L6",title:"Bi Abinci Daga Tushensa Zuwa Teburi",objective:"Bincika kuma gabatar da cikakkiyar tafiyar abinci bisa hujja.",teaching:["Bibiyar abinci na nufin danganta samfurin da asalinsa da matakan da ya bi.","Hujja na iya fitowa daga lakabi, lura, hira da babban mutum ko ingantattun bayanai.","Gabatarwa mai kyau tana bambance abin da aka sani da abin da ake zato."],activity:"Kungiyoyi su zabi abinci daya su gina labarinsa daga tushe zuwa tebur ta amfani da akalla tushe biyu na hujja.",diy:"Kammala Fayil din Tafiyar Abinci: ASALI → SAMARWA → GIRBI → SARRAFAWA → SUFURI/AJIYA → SHIRI → CI.",aiLayer:"Haɗawa — tabbatarwa: amfani da AI don gano tambaya ko mataki daya, sannan a tabbatar kafin a saka shi.",enterprise:"Dalibai su gano akalla ayyuka ko hidimomi uku da suka shafi tafiyar abincin da suka zaba.",quiz:[{question:"Me ke sa tafiyar abinci ta zama amintacciya?",options:["Hujjar da aka tabbatar","Hasashe","Kwafi ba tare da dubawa ba","Taken talla"],answer:0},{question:"Me za a yi da matakin da ba a tabbatar ba?",options:["A nuna cewa ba a tabbatar ba sannan a bincika","A ce gaskiya ne","A boye shi","A kirkiri hujja"],answer:0},{question:"Cikakkiyar tafiyar abinci tana nuna…",options:["Yadda mutane, albarkatu da matakai suke hade","Launin kwalba kawai","Farashi kawai","Aikin mutum daya kawai"],answer:0}]}
+  ],
+  finalAssessment:{
+    mcq:[
+      {question:"Shinkafa tana fitowa ne daga…",options:["Amfanin gona","Batir","Roba","Ma'adani"],answer:0},
+      {question:"Wanne misali ne na sarrafa abinci?",options:["Busarwa ko nika","Watsi da tsafta","Barin amfanin gona ya lalace","Goge bayanai"],answer:0},
+      {question:"Me zai iya faruwa tsakanin gona da tebur?",options:["Girbi, sarrafawa, sufuri, ajiya da shiri","Babu komai","Talla kawai","Biyan kudi kawai"],answer:0},
+      {question:"Me yasa ajiya mai kyau take da muhimmanci?",options:["Tana kare inganci da rage lalacewa","Tana bada tabbacin dawwama har abada","Tana kawar da duk hatsari","Tana maye gurbin tsafta"],answer:0},
+      {question:"Wanne tushe ne mai amfani wajen gano asalin abinci?",options:["Lakabi ko bayanin mai samarwa da aka tabbatar","Jita-jita","Sakon da ba a tabbatar ba","Hasashe"],answer:0},
+      {question:"Me yasa asarar abinci ke iya zama asarar ruwa da makamashi?",options:["Saboda an yi amfani da su wajen samarwa da sarrafawa","Saboda abinci na dauke da wuta","Saboda kwalaye suna kirkirar albarkatu","Ba ta da tasiri"],answer:0},
+      {question:"Yaya za a yi amfani da bayanin AI game da asalin abinci?",options:["A matsayin shawara da za a tabbatar","A matsayin gaskiya ta karshe","Maimakon lura","Maimakon ka'idar aminci"],answer:0},
+      {question:"Menene tsarin abinci?",options:["Mutane, albarkatu da ayyuka masu hade daga tushe zuwa amfani","Gona kadai","Shago kadai","Dakin girki kadai"],answer:0}
+    ],
+    theory:[
+      "Zabi abinci daya na gida ka bayyana ko asalinsa tsiro ne, dabba ne ko hadadde.",
+      "Bayyana akalla matakai shida a tafiyar abinci daga tushe zuwa ci.",
+      "Bayyana hanyoyi biyu da rashin sarrafawa ko ajiya zai kara asarar abinci.",
+      "Bayyana yadda sarrafawa zai iya kara daraja yayin kiyaye aminci.",
+      "Bayyana yadda za ka tabbatar da ikirarin AI game da asalin abinci ko yadda aka samar da shi."
+    ],
+    practical:"Zabi abinci daya na gida ka gina tafiyar sa bisa hujja, ka nuna asalinsa, akalla matakai shida, albarkatu daya da aka yi amfani da ita, batun inganci ko aminci daya, matakin rage asara daya, da ayyuka ko hidimomi uku da suka shafi tafiyar."
+  },
+  evidence:["Allon Asalin Abinci","Taswirar tushen abinci","Jadawalin kayan asali zuwa samfur","Zanen Tafiyar Gona zuwa Abinci","Jerin Kula da Abinci","Fayil din Tafiyar Abinci","Rubutun tantance aikin malami"],
+  passport:["K: yana gane asalin abinci, wuraren samarwa da matakan tsarin abinci","P: yana gina kuma bayyana tafiyar abinci daga tushe zuwa tebur","D: yana amfani da hujja da tabbatar da ikirarin AI/dijital","S: yana bin ka'idojin rashin lafiyar abinci, tsafta da tsaron wurare","E: yana gane yadda ake kara daraja a noma, sarrafawa, sufuri da hidima","L: yana aiki tare, yana bambance hujja da zato, kuma yana sadar da labarin tsarin abinci"],
+  trainerNotes:["Fi amfani da abinci na gida da dalibai suka sani.","Kada a nuna duk abincin da aka sarrafa a matsayin mai kyau ko mara kyau; a mayar da hankali kan abin da sarrafawa ke yi.","Yi amfani da hotuna ko kwalaye masu tsabta idan akwai matsalar allergy ko tsafta.","A gayyaci ma'aikatan tsarin abinci ne kawai ta hanyoyin kariyar yara da aka amince da su.","A nuna gudummawar mata da maza a duk matakan tsarin abinci.","Koyarwar kasuwanci ta kasance ta fahimta; kada a tilasta wa yara sayarwa."],
+  remediation:"Yi amfani da abinci uku kacal da hotuna. Maimaita tsarin TUSHE → SARRAFA/SHIRYA → SUFURI/AJIYA → CI kafin karin matakai. A yarda da amsar baka maimakon dogon rubutu.",
+  extension:"Dalibi ya kwatanta tafiyar sabo da sarrafa abinci, ya gano inda ake amfani da ruwa da makamashi, sannan ya ba da shawarar hanyar rage asara.",
+  imagePrompts:[]
+};
