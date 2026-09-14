@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Award, BookOpen, BrainCircuit, BriefcaseBusiness, CheckCircle2, ChevronRight, ClipboardCheck, Compass, Database, FileCheck2, Leaf, LockKeyhole, ShieldCheck, Sparkles, Target, Trophy, Users, Wrench } from "lucide-react";
 import { LanguageMenu } from "@/components/language-menu";
 import { learnerCopy, localizeHref, normalizeLanguage } from "@/lib/i18n6";
+import type { AppLanguage } from "@/lib/i18n6";
 import { getCommonCopy, localizedCompetencyDomains } from "@/lib/greenskills-i18n";
 
 const learnerAreas = ["learning", "growmeal", "food-discovery", "passport", "challenges", "future"] as const;
@@ -65,7 +66,7 @@ export default async function LearnerAreaPage({ params, searchParams }: LearnerA
   );
 }
 
-function PassportExperience({ language, privacy, domains }: { language: string; privacy: string; domains: [string, string][] }) {
+function PassportExperience({ language, privacy, domains }: { language: AppLanguage; privacy: string; domains: ReadonlyArray<readonly [string, string]> }) {
   const domainIcons = [BookOpen, Wrench, Database, ShieldCheck, BriefcaseBusiness, Users];
   return <>
     <section className="passport-command-card">
@@ -106,7 +107,7 @@ function PassportExperience({ language, privacy, domains }: { language: string; 
   </>;
 }
 
-function GenericAreaExperience({ area, language, title, description, focus, privacy }: { area: LearnerArea; language: string; title: string; description: string; focus: string[]; privacy: string }) {
+function GenericAreaExperience({ area, language, title, description, focus, privacy }: { area: LearnerArea; language: AppLanguage; title: string; description: string; focus: string[]; privacy: string }) {
   const destination = area === "learning" ? "/pathways" : area === "future" ? "/learner/passport" : "/learner/challenges";
   return <>
     <section className="learner-area-workspace">
