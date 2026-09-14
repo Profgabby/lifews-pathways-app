@@ -102,17 +102,14 @@ import { getGT209 } from "@/lib/modules/greentech-few-systems-technician/gt2-09"
 import { getGT210 } from "@/lib/modules/greentech-few-systems-technician/gt2-10";
 import { getGT211 } from "@/lib/modules/greentech-few-systems-technician/gt2-11";
 import { getGT212 } from "@/lib/modules/greentech-few-systems-technician/gt2-12";
+import { getGA01 } from "@/lib/modules/greentech-advanced-systems/ga-01";
+import { getGA02 } from "@/lib/modules/greentech-advanced-systems/ga-02";
+import { getGA03 } from "@/lib/modules/greentech-advanced-systems/ga-03";
 import { generateFullModule } from "@/lib/modules/generated-module";
 
 export type FullCurriculumModule=PF01Module|(Omit<PF01Module,"code">&{code:string});
 
-const pf01Localized: Partial<Record<AppLanguage, PF01Module>> = {
-  ar: pf01Ar,
-  fr: pf01Fr,
-  ha: pf01Ha,
-  ig: pf01Ig,
-  yo: pf01Yo,
-};
+const pf01Localized: Partial<Record<AppLanguage, PF01Module>> = {ar:pf01Ar,fr:pf01Fr,ha:pf01Ha,ig:pf01Ig,yo:pf01Yo};
 
 const authoredModuleGetters:Record<string,(language:AppLanguage)=>FullCurriculumModule>={
 "PF-01":language=>pf01Localized[language]??getPF01(language),"PF-02":getPF02,"PF-03":getPF03,"PF-04":getPF04,"PF-05":getPF05,"PF-06":getPF06,"PF-07":getPF07,"PF-08":getPF08,"PF-09":getPF09,"PF-10":getPF10,"PF-11":getPF11,"PF-12":getPF12,
@@ -122,6 +119,7 @@ const authoredModuleGetters:Record<string,(language:AppLanguage)=>FullCurriculum
 "KW-01":getKW01,"KW-02":getKW02,"KW-03":getKW03,"KW-04":getKW04,"KW-05":getKW05,"KW-06":getKW06,"KW-07":getKW07,"KW-08":getKW08,"KW-09":getKW09,"KW-10":getKW10,"KW-11":getKW11,"KW-12":getKW12,
 "KE-01":getKE01,"KE-02":getKE02,"KE-03":getKE03,"KE-04":getKE04,"KE-05":getKE05,"KE-06":getKE06,"KE-07":getKE07,"KE-08":getKE08,"KE-09":getKE09,"KE-10":getKE10,"KE-11":getKE11,"KE-12":getKE12,
 "GF-01":getGF01,"GF-02":getGF02,"GF-03":getGF03,"GF-04":getGF04,"GF-05":getGF05,"GF-06":getGF06,"GF-07":getGF07,"GF-08":getGF08,"GF-09":getGF09,"GF-10":getGF10,"GF-11":getGF11,"GF-12":getGF12,
-"GT2-01":getGT201,"GT2-02":getGT202,"GT2-03":getGT203,"GT2-04":getGT204,"GT2-05":getGT205,"GT2-06":getGT206,"GT2-07":getGT207,"GT2-08":getGT208,"GT2-09":getGT209,"GT2-10":getGT210,"GT2-11":getGT211,"GT2-12":getGT212};
+"GT2-01":getGT201,"GT2-02":getGT202,"GT2-03":getGT203,"GT2-04":getGT204,"GT2-05":getGT205,"GT2-06":getGT206,"GT2-07":getGT207,"GT2-08":getGT208,"GT2-09":getGT209,"GT2-10":getGT210,"GT2-11":getGT211,"GT2-12":getGT212,
+"GA-01":getGA01,"GA-02":getGA02,"GA-03":getGA03};
 export const developedModuleCodes=Object.freeze(curriculumPrograms.flatMap(program=>program.lessons.map(lesson=>lesson.code)));
 export function getFullCurriculumModule(code:string,language:AppLanguage):FullCurriculumModule|null{const normalized=code.toUpperCase();return authoredModuleGetters[normalized]?.(language)??generateFullModule(normalized,language);}
