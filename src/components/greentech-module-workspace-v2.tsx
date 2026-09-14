@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 import { GreenTechModuleAssessment } from "@/components/greentech-module-assessment";
+import { GreenTechModulePractical } from "@/components/greentech-module-practical";
 import { GreenTechStaffReview } from "@/components/greentech-staff-review";
 import type { GreenTechModule, GreenTechTier } from "@/lib/greentech";
 
@@ -83,27 +84,10 @@ export function GreenTechModuleWorkspaceV2({ module }: Props) {
     {stage <= 5 && <section style={card}><div style={eyebrow}>LEARNING SECTION {stage}</div><h2>{learning[stage - 1].title}</h2><p>{learning[stage - 1].body}</p><strong>Learner response</strong><p>{learning[stage - 1].prompt}</p><textarea rows={7} style={textarea} value={responses[stage] || ""} onChange={e => setResponses(current => ({ ...current, [stage]: e.target.value }))} /><button style={primary} disabled={(responses[stage] || "").trim().length < 20} onClick={async () => { if (await submitSection(stage, "LEARNING_RESPONSE", { response: responses[stage] })) setStage(stage + 1); }}>Submit section & continue</button></section>}
 
     {stage === 6 && <GreenTechModuleAssessment module={module} onSubmit={async payload => { if (await submitSection(6, "ASSESSMENT_RESPONSE", payload)) { setNotice({ kind: "ok", text: `Assessment submitted. MCQ self-check: ${payload.mcq_score}%. Theory responses await staff marking.` }); setStage(7); } }} />}
-    {stage === 7 && <Practical module={module} submitSection={submitSection} submitRecord={submitRecord} />}
+    {stage === 7 && <GreenTechModulePractical module={module} submitSection={submitSection} submitRecord={submitRecord} />}
 
     {staff && <GreenTechStaffReview module={module} supabase={supabase} onNotice={setNotice} />}
   </div>;
-}
-
-function Practical({ module, submitSection, submitRecord }: { module: GreenTechModule; submitSection: any; submitRecord: any }) {
-  const [procedure, setProcedure] = useState("");
-  const [measurements, setMeasurements] = useState("");
-  const [evidence, setEvidence] = useState("");
-  const [ai, setAi] = useState({ task: "", input_summary: "", ai_use: "", output_summary: "", verification_method: "", errors_or_limitations: "", correction: "", final_decision: "" });
-  const [enterprise, setEnterprise] = useState({ customer_problem: "", service_scope: "", customer_price: "" });
-
-  return <section style={card}><div style={eyebrow}>DIY • PRACTICAL • EVIDENCE</div><h2>{module.diy}</h2><p><strong>Safety gate:</strong> follow trainer instructions, manufacturer requirements and applicable procedures. AI never overrides safety controls.</p>
-    <label>Procedure / work completed<textarea rows={5} style={textarea} value={procedure} onChange={e => setProcedure(e.target.value)} /></label>
-    <label>Measurements, calculations and result<textarea rows={5} style={textarea} value={measurements} onChange={e => setMeasurements(e.target.value)} /></label>
-    <label>HTTPS evidence link<input style={input} value={evidence} onChange={e => setEvidence(e.target.value)} /></label>
-    <h3>AI Work Log</h3>{Object.keys(ai).map(key => <label key={key} style={{ display: "block", marginBottom: 8 }}>{key.replaceAll("_", " ")}<textarea rows={2} style={textarea} value={(ai as any)[key]} onChange={e => setAi(current => ({ ...current, [key]: e.target.value }))} /></label>)}
-    <h3>Enterprise task</h3><label>Customer/community problem<textarea rows={3} style={textarea} value={enterprise.customer_problem} onChange={e => setEnterprise(current => ({ ...current, customer_problem: e.target.value }))} /></label><label>Technical service scope<textarea rows={3} style={textarea} value={enterprise.service_scope} onChange={e => setEnterprise(current => ({ ...current, service_scope: e.target.value }))} /></label><label>Proposed customer price<input type="number" min="0" style={input} value={enterprise.customer_price} onChange={e => setEnterprise(current => ({ ...current, customer_price: e.target.value }))} /></label>
-    <button style={primary} disabled={procedure.length < 20 || measurements.length < 10} onClick={async () => { const ok = await submitSection(7, "DIY_RESPONSE", { procedure, measurements, evidence }); if (!ok) return; if (evidence) await submitRecord("FIELDWORK", { evidence_type: "PRACTICAL", title: `${module.code} practical evidence`, description: `${procedure}\n\nMeasurements: ${measurements}`, file_url: evidence }); if (ai.task && ai.final_decision) await submitRecord("AI_LOG", { ...ai, ai_layer: 4, privacy_check: true, independent_reasoning_verified: true }); if (enterprise.customer_problem && enterprise.service_scope) await submitRecord("ENTERPRISE", enterprise); }}>Submit practical package</button>
-  </section>;
 }
 
 const card: React.CSSProperties = { background: "white", border: "1px solid #dce7df", borderRadius: 18, padding: 22 };
