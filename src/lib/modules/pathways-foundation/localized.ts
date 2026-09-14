@@ -30,7 +30,10 @@ import { pf06Fr } from "./pf-06-fr";
 import { pf06Ha } from "./pf-06-ha";
 import { pf06Ig } from "./pf-06-ig";
 import { pf06Yo } from "./pf-06-yo";
+import { pf07Ar } from "./pf-07-ar";
 import { pf07Fr } from "./pf-07-fr";
+import { pf07Ha } from "./pf-07-ha";
+import { pf07Ig } from "./pf-07-ig";
 import { pf07Yo } from "./pf-07-yo";
 
 export type AnyFoundationModule = PF01Module | (Omit<PF01Module,"code"> & { code:string });
@@ -43,7 +46,7 @@ const localizedByCode: Record<string,LocalizedSet> = {
   "PF-04": { ar:pf04Ar, fr:pf04Fr, ha:pf04Ha, ig:pf04Ig, yo:pf04Yo },
   "PF-05": { ar:pf05Ar, fr:pf05Fr, ha:pf05Ha, ig:pf05Ig, yo:pf05Yo },
   "PF-06": { ar:pf06Ar, fr:pf06Fr, ha:pf06Ha, ig:pf06Ig, yo:pf06Yo },
-  "PF-07": { fr:pf07Fr, yo:pf07Yo },
+  "PF-07": { ar:pf07Ar, fr:pf07Fr, ha:pf07Ha, ig:pf07Ig, yo:pf07Yo },
 };
 
 export function getFoundationLocalizedModule(code:string, language:AppLanguage):AnyFoundationModule|null {
