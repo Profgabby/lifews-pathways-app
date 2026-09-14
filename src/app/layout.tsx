@@ -3,6 +3,7 @@ import { PwaRegister } from "@/components/pwa-register";
 import "./globals.css";
 import "./greenskills.css";
 import "./module-player.css";
+import "./learner-space.css";
 
 export const metadata: Metadata = {
   title: {
