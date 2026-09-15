@@ -18,6 +18,25 @@ export async function issueCredentialAction(formData: FormData): Promise<void> {
     p_title: title,
   });
   if (error) throw new Error(error.message);
+  revalidatePath("/dashboard/credentials");
+}
 
+export async function revokeCredentialAction(formData: FormData): Promise<void> {
+  const credentialId = String(formData.get("credential_id") ?? "");
+  const reason = String(formData.get("reason") ?? "").trim();
+  if (!credentialId || !reason) throw new Error("Credential and revocation reason are required");
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.rpc("revoke_greenskills_credential", { p_credential_id: credentialId, p_reason: reason });
+  if (error) throw new Error(error.message);
+  revalidatePath("/dashboard/credentials");
+}
+
+export async function reissueCredentialAction(formData: FormData): Promise<void> {
+  const credentialId = String(formData.get("credential_id") ?? "");
+  const reason = String(formData.get("reason") ?? "").trim() || null;
+  if (!credentialId) throw new Error("Credential is required");
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.rpc("reissue_greenskills_credential", { p_credential_id: credentialId, p_reason: reason });
+  if (error) throw new Error(error.message);
   revalidatePath("/dashboard/credentials");
 }
