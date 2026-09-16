@@ -40,7 +40,7 @@ export default async function ModulePage({ params, searchParams }: PageProps) {
   return <main className="learner-page module-slide-page module-player" dir={rtl ? "rtl" : "ltr"} lang={language}>
     <ModuleProgressTracker code={module.code} stage={step}/>
     <header className="learner-header module-header">
-      <Link className="learner-brand" href={localizeHref(program.href, language)}><img src="/lifews-mark.svg" alt="LIFEWS logo"/><div><strong>{program.brand}</strong><span>{module.level}</span></div></Link>
+      <Link className="learner-brand" href={localizeHref(program.href, language)}><img src="/lifews-logo.png" alt="LIFEWS logo"/><div><strong>{program.brand}</strong><span>{module.level}</span></div></Link>
       <div className="learner-header-actions module-header-actions"><LanguageMenu currentLanguage={language}/><Link className="text-link" href={localizeHref(program.href, language)}>{program.label}</Link><Link className="text-link" href={localizeHref("/learner", language)}>{copy.learnerSpace}</Link></div>
     </header>
 
@@ -49,13 +49,12 @@ export default async function ModulePage({ params, searchParams }: PageProps) {
       <aside className="module-progress-card"><div className="module-progress-ring" style={{ "--progress": `${progress}%` } as React.CSSProperties}><strong>{progress}%</strong></div><div><span>{copy.moduleProgress}</span><strong>{copy.stageOf(step)}</strong><small>{copy.progressHint}</small></div></aside>
     </section>
 
-    <ModuleContextMedia code={module.code} priority={step === 1} />
-
     <nav className="module-step-nav module-player-nav" aria-label={`${module.code} module navigation`}>
       {navItems.map(item => <Link key={item.step} href={moduleStepHref(module.code, language, item.step)} className={step === item.step ? "module-step-link active" : item.step < step ? "module-step-link complete" : "module-step-link"} aria-current={step === item.step ? "page" : undefined}><span>{item.step < step ? <CheckCircle2 size={19}/> : String(item.step).padStart(2, "0")}</span><strong>{item.label}</strong></Link>)}
     </nav>
 
     {step <= 5 && <section className="module-slide-card module-learning-stage">
+      {step === 1 && <ModuleContextMedia code={module.code} priority />}
       <div className="module-slide-topline"><div><div className="eyebrow">{copy.learningStage(step)}</div><h2>{sectionGroups[step - 1]?.length === 1 ? sectionGroups[step - 1][0]?.title : copy.applyConnect}</h2></div><div className="module-stage-icon"><BookOpen size={32}/></div></div>
       {step === 1 && <div className="module-intro-grid module-orientation-grid"><article><Target size={21}/><h3>{copy.whyMatters}</h3><p>{module.whyItMatters}</p></article><article><Trophy size={21}/><h3>{copy.achieve}</h3><ul>{module.outcomes.map(x => <li key={x}>{x}</li>)}</ul></article><article><Lightbulb size={21}/><h3>{copy.vocabulary}</h3><div className="module-chip-list">{module.vocabulary.map(x => <span key={x}>{x}</span>)}</div></article><article><ShieldCheck size={21}/><h3>{copy.materialsSafety}</h3><ul>{[...module.materials, ...module.safety].map(x => <li key={x}>{x}</li>)}</ul></article></div>}
       <div className="module-section-lessons">{sectionGroups[step - 1]?.map((lesson, lessonIndex) => <article className="module-lesson-panel" key={lesson.id}><div className="module-lesson-heading"><div><div className="eyebrow">{lesson.id}{sectionGroups[step - 1].length > 1 ? ` · ${lessonIndex + 1}` : ""}</div><h2>{lesson.title}</h2></div><span className="module-status-badge">{copy.learning}</span></div><p className="module-objective"><Target size={18}/><span><strong>{copy.objective}</strong>{lesson.objective}</span></p><div className="module-content-block"><h3><BookOpen size={19}/> {copy.learn}</h3><ul>{lesson.teaching.map(x => <li key={x}>{x}</li>)}</ul></div><div className="module-callout module-activity-card"><Sparkles size={21}/><div><strong>{copy.tryIt}</strong><p>{lesson.activity}</p></div></div><div className="module-two-column"><div className="module-ai-card"><BrainCircuit size={21}/><strong>{copy.aiDigital}</strong><p>{lesson.aiLayer}</p></div><div className="module-enterprise-card"><BriefcaseBusiness size={21}/><strong>{copy.enterprise}</strong><p>{lesson.enterprise}</p></div></div></article>)}</div>

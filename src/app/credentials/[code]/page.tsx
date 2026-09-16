@@ -19,7 +19,7 @@ export default async function CredentialPage({ params }: PageProps) {
   const publicStatus = valid ? "VALID" : expiredByDate && credential.verification_status === "VALID" ? "EXPIRED" : credential.verification_status;
 
   return <main className="main" style={{ maxWidth:1050,margin:"0 auto",padding:"32px 20px 64px" }}>
-    <div className="topbar" style={{ marginBottom:24 }}><Link className="learner-brand" href="/"><img src="/lifews-mark.svg" alt="LIFEWS logo"/><div><strong>LIFEWS GreenSkills</strong><span>Credential Verification</span></div></Link><span className="status-pill">{valid ? "VERIFIED" : publicStatus}</span></div>
+    <div className="topbar" style={{ marginBottom:24 }}><Link className="learner-brand" href="/"><img src="/lifews-logo.png" alt="LIFEWS logo"/><div><strong>LIFEWS GreenSkills</strong><span>Credential Verification</span></div></Link><span className="status-pill">{valid ? "VERIFIED" : publicStatus}</span></div>
     {!valid ? <section className="card" style={{ marginBottom:18,border:"2px solid currentColor" }}><div style={{ display:"flex",gap:12,alignItems:"center" }}><ShieldAlert size={28}/><div><strong>This credential is not currently valid.</strong><p className="subtitle" style={{ margin:0 }}>Status: {publicStatus}. This page is retained as an official historical verification record; it must not be represented as a current LIFEWS credential.</p></div></div></section> : null}
     <section className="card" style={{ padding:40,textAlign:"center",border:"2px solid var(--border)" }}>
       <div className="eyebrow">LIFEWS FOUNDATION · GREENSKILLS</div><h1 style={{ fontSize:"clamp(2rem,5vw,4rem)",marginBottom:8 }}>Certificate of Achievement</h1><p className="subtitle">Evidence-backed competency credential</p>

@@ -7,7 +7,7 @@ import { getSharedSystems } from "@/lib/greenskills-shared-i18n";
 
 type HomePageProps = { searchParams?: Promise<{ lang?: string }> };
 
-const lifewsLogo = "/lifews-logo.svg";
+const lifewsLogo = "/lifews-logo.png";
 
 export default async function GreenSkillsHome({ searchParams }: HomePageProps) {
   const params = searchParams ? await searchParams : {};
@@ -26,6 +26,7 @@ export default async function GreenSkillsHome({ searchParams }: HomePageProps) {
     </aside>
     <main className="gs-main">
       <header className="gs-hero"><div className="gs-eyebrow">{copy.eyebrow}</div><h1>{copy.hero1}<br/><span>{copy.hero2}</span></h1><p className="gs-hero-tagline">{copy.tagline}</p><p className="gs-hero-copy">{copy.intro}</p><div className="gs-hero-actions"><a className="gs-button gs-button-primary" href="#programs">{copy.explore}</a><Link className="gs-button gs-button-secondary" href={localizeHref("/login",language)}>{copy.nav.staffSignIn}</Link></div></header>
+      <figure className="gs-home-hero-media"><img src="/curriculum-media/greentech-integrated-few.webp" alt="An integrated LIFEWS food, energy and water learning system" width={1600} height={900} fetchPriority="high"/><figcaption>LIFEWS GreenSkills connects learning with practical food, energy and water systems.</figcaption></figure>
       <section className="gs-journey">{copy.journey.map((step,index)=><div className="gs-journey-item" key={step}><span>{step}</span>{index<copy.journey.length-1&&<b>→</b>}</div>)}</section>
       <section id="programs" className="gs-section"><div className="gs-section-heading"><div><div className="gs-eyebrow">{copy.programsEyebrow}</div><h2>{copy.programsTitle}</h2></div><p>{copy.programsBody}</p></div><div className="gs-program-grid">{programs.map(program=><article className={`gs-program-card gs-program-${program.id}`} key={program.id}><div className="gs-program-top"><span className="gs-program-number">{program.number}</span><span className="gs-program-eyebrow">{program.eyebrow}</span></div><h3>{program.shortName}</h3><strong className="gs-program-tagline">{program.tagline}</strong><p>{program.purpose}</p><div className="gs-theme-list">{program.themes.slice(0,6).map(theme=><span key={theme}>{theme}</span>)}</div><Link className="gs-program-link" href={localizeHref(program.href,language)}>{program.action} →</Link></article>)}</div></section>
       <section className="gs-progression-section"><div className="gs-eyebrow">{copy.flexible}</div><h2>{copy.routesTitle}</h2><div className="gs-route-grid">{copy.routes.map(([label,title,body])=><article key={label}><span>{label}</span><strong>{title}</strong><p>{body}</p></article>)}</div></section>

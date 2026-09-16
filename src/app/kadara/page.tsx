@@ -28,7 +28,7 @@ export default async function KadaraPage({ searchParams }: PageProps) {
 
   return <div className="program-page-shell kadara-experience" dir={rtl ? "rtl" : "ltr"} lang={language}>
     <header className="program-topbar kadara-topbar">
-      <Link href={localizeHref("/", language)} className="program-brand-link"><img src="/lifews-mark.svg" alt="LIFEWS"/><div><strong>LIFEWS GreenSkills</strong><span>{home.tagline}</span></div></Link>
+      <Link href={localizeHref("/", language)} className="program-brand-link"><img src="/lifews-logo.png" alt="LIFEWS"/><div><strong>LIFEWS GreenSkills</strong><span>{home.tagline}</span></div></Link>
       <div className="kadara-top-actions"><Link href={localizeHref("/learner", language)} className="kadara-learner-link"><BookOpen size={16}/> Learner Space</Link><LanguageMenu currentLanguage={language}/></div>
     </header>
     <main>

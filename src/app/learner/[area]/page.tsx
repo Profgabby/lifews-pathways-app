@@ -68,7 +68,7 @@ export default async function LearnerAreaPage({ params, searchParams }: LearnerA
     <main className="learner-page learner-area-shell" dir={rtl ? "rtl" : "ltr"} lang={language}>
       <header className="learner-header learner-area-header">
         <Link className="learner-brand" href={localizeHref("/learner", language)}>
-          <img src="/lifews-mark.svg" alt="LIFEWS logo" />
+          <img src="/lifews-logo.png" alt="LIFEWS logo" />
           <div><strong>LIFEWS GreenSkills</strong><span>{common.learnerSpace}</span></div>
         </Link>
         <div className="learner-header-actions"><LanguageMenu currentLanguage={language} /><Link className="text-link" href={localizeHref("/learner", language)}>{common.learnerSpace}</Link></div>

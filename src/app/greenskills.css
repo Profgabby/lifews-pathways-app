@@ -189,3 +189,11 @@
   .kadara-premium-hero h1 { font-size: 3.2rem; }
   .kadara-hero-stats { display: grid; grid-template-columns: 1fr; }
 }
+
+.gs-home-hero-media { margin: 0 0 8px; border-radius: 22px; overflow: hidden; background: var(--gs-sage); box-shadow: 0 18px 45px rgba(0,55,31,.12); }
+.gs-home-hero-media img { display: block; width: 100%; height: clamp(240px, 38vw, 520px); object-fit: cover; }
+.gs-home-hero-media figcaption { padding: 12px 16px 14px; color: var(--gs-muted); font-size: .8rem; line-height: 1.4; }
+.module-context-media { margin: 0 0 24px; border-radius: 18px; overflow: hidden; background: var(--sage); box-shadow: var(--shadow); }
+.module-context-media img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.module-context-media-hero { border: 3px solid var(--gold); }
+.module-context-media-context { border: 1px solid var(--border); }

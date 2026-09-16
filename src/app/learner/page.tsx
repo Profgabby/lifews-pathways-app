@@ -18,7 +18,7 @@ export default async function LearnerPage({ searchParams }: LearnerPageProps) {
     <main className="learner-page" dir={rtl ? "rtl" : "ltr"} lang={language}>
       <header className="learner-header">
         <Link className="learner-brand" href={localizeHref("/", language)}>
-          <img src="/lifews-mark.svg" alt="LIFEWS logo" />
+          <img src="/lifews-logo.png" alt="LIFEWS logo" />
           <div><strong>LIFEWS Pathways</strong><span>{common.learnerSpace}</span></div>
         </Link>
         <div className="learner-header-actions"><LanguageMenu currentLanguage={language} /><Link className="text-link" href={localizeHref("/", language)}>{copy.back}</Link></div>
