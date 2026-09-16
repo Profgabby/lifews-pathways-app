@@ -5,6 +5,7 @@ import { LanguageMenu } from "@/components/language-menu";
 import { LearnerEvidencePanel } from "@/components/learner-evidence-panel";
 import { ModuleAssessmentPlayer } from "@/components/module-assessment-player";
 import { ModuleProgressTracker } from "@/components/module-progress-tracker";
+import { ModuleContextMedia } from "@/components/module-context-media";
 import { localizeHref, normalizeLanguage } from "@/lib/i18n6";
 import { modulePlayerCopy } from "@/lib/module-player-i18n";
 import { getFullCurriculumModule } from "@/lib/modules";
@@ -47,6 +48,8 @@ export default async function ModulePage({ params, searchParams }: PageProps) {
       <div className="module-player-copy"><div className="eyebrow">{module.code} · {module.level}</div><h1>{module.title}</h1><p>{module.bigQuestion}</p><div className="module-meta-row"><span><BookOpen size={16}/> 7 {copy.stages}</span><span><Target size={16}/> {module.duration}</span><span><Hammer size={16}/> {module.fieldworkHours}h {copy.fieldworks}</span></div></div>
       <aside className="module-progress-card"><div className="module-progress-ring" style={{ "--progress": `${progress}%` } as React.CSSProperties}><strong>{progress}%</strong></div><div><span>{copy.moduleProgress}</span><strong>{copy.stageOf(step)}</strong><small>{copy.progressHint}</small></div></aside>
     </section>
+
+    <ModuleContextMedia code={module.code} priority={step === 1} />
 
     <nav className="module-step-nav module-player-nav" aria-label={`${module.code} module navigation`}>
       {navItems.map(item => <Link key={item.step} href={moduleStepHref(module.code, language, item.step)} className={step === item.step ? "module-step-link active" : item.step < step ? "module-step-link complete" : "module-step-link"} aria-current={step === item.step ? "page" : undefined}><span>{item.step < step ? <CheckCircle2 size={19}/> : String(item.step).padStart(2, "0")}</span><strong>{item.label}</strong></Link>)}
