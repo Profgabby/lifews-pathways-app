@@ -7,7 +7,7 @@ import { getSharedSystems } from "@/lib/greenskills-shared-i18n";
 
 type HomePageProps = { searchParams?: Promise<{ lang?: string }> };
 
-const lifewsLogo = "https://raw.githubusercontent.com/Profgabby/lifews-pathways-app/dcacd82cfd3d94e0317be7079743e4cc462ffa1d/public/lifews-logo.svg";
+const lifewsLogo = "/lifews-logo.svg";
 
 export default async function GreenSkillsHome({ searchParams }: HomePageProps) {
   const params = searchParams ? await searchParams : {};
