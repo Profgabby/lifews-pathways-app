@@ -7,6 +7,8 @@ import { getSharedSystems } from "@/lib/greenskills-shared-i18n";
 
 type HomePageProps = { searchParams?: Promise<{ lang?: string }> };
 
+const lifewsLogo = "https://raw.githubusercontent.com/Profgabby/lifews-pathways-app/dcacd82cfd3d94e0317be7079743e4cc462ffa1d/public/lifews-logo.svg";
+
 export default async function GreenSkillsHome({ searchParams }: HomePageProps) {
   const params = searchParams ? await searchParams : {};
   const language = normalizeLanguage(params.lang);
@@ -17,7 +19,7 @@ export default async function GreenSkillsHome({ searchParams }: HomePageProps) {
 
   return <div className="gs-shell" dir={rtl ? "rtl" : "ltr"} lang={language}>
     <aside className="gs-sidebar">
-      <Link href={localizeHref("/",language)} className="gs-brand"><img src="/lifews-mark.svg" alt="LIFEWS" className="gs-brand-mark"/><div><strong>LIFEWS</strong><span>GreenSkills</span><small>{copy.tagline}</small></div></Link>
+      <Link href={localizeHref("/",language)} className="gs-brand"><img src={lifewsLogo} alt="LIFEWS" className="gs-brand-mark"/><div><strong>LIFEWS</strong><span>GreenSkills</span><small>{copy.tagline}</small></div></Link>
       <LanguageMenu currentLanguage={language}/>
       <nav className="gs-nav"><Link className="active" href={localizeHref("/",language)}>{copy.nav.greenSkillsHome}</Link><Link href={localizeHref("/pathways",language)}>{copy.nav.pathways}</Link><Link href={localizeHref("/kadara",language)}>{copy.nav.kadara}</Link><Link href={localizeHref("/greentech",language)}>{copy.nav.greenTech}</Link><a href="#shared-systems">{copy.nav.skillsPassport}</a><a href="#shared-systems">{copy.nav.fieldWorks}</a></nav>
       <div className="gs-sidebar-footer">{copy.sidebarFooter.map((item,index)=><span key={`${item}-${index}`}>{index ? `• ${item}` : item}</span>)}</div>
@@ -29,7 +31,7 @@ export default async function GreenSkillsHome({ searchParams }: HomePageProps) {
       <section className="gs-progression-section"><div className="gs-eyebrow">{copy.flexible}</div><h2>{copy.routesTitle}</h2><div className="gs-route-grid">{copy.routes.map(([label,title,body])=><article key={label}><span>{label}</span><strong>{title}</strong><p>{body}</p></article>)}</div></section>
       <section id="shared-systems" className="gs-shared-section"><div className="gs-section-heading"><div><div className="gs-eyebrow">{copy.sharedEyebrow}</div><h2>{copy.sharedTitle}</h2></div><p>{copy.sharedBody}</p></div><div className="gs-shared-grid">{sharedSystems.map(([name,description])=><article key={name}><h3>{name}</h3><p>{description}</p></article>)}</div></section>
       <section className="gs-passport-band"><div><div className="gs-eyebrow">{copy.passportEyebrow}</div><h2>{copy.passportTitle}</h2><p>{copy.passportBody}</p></div><div className="gs-passport-fields">{copy.passportFields.map(item=><span key={item}>{item}</span>)}</div></section>
-      <footer className="gs-footer"><img src="/lifews-mark.svg" alt="LIFEWS"/><div><strong>LIFEWS GreenSkills</strong><span>{copy.tagline}</span></div></footer>
+      <footer className="gs-footer"><img src={lifewsLogo} alt="LIFEWS"/><div><strong>LIFEWS GreenSkills</strong><span>{copy.tagline}</span></div></footer>
     </main>
   </div>;
 }
