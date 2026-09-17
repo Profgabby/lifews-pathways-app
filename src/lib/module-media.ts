@@ -12,13 +12,23 @@ export type ModuleMedia = {
  */
 const media: Record<string, ModuleMedia> = {
   // Pathways: human-centred, foundational and transition imagery.
-  "PF-01": { asset: "/curriculum-media/pathways-almajiri-learning.webp", alt: "Learners taking part in a supervised foundational learning session", role: "hero" },
-  "PF-04": { asset: "/curriculum-media/pathways-garden-learning.webp", alt: "Learners observing plants in a supervised learning garden", role: "context" },
-  "PF-06": { asset: "/curriculum-media/pathways-garden-learning.webp", alt: "Learners exploring water use in a productive learning garden", role: "context" },
-  "PE-01": { asset: "/curriculum-media/pathways-garden-learning.webp", alt: "Learners exploring food production in a supervised garden", role: "hero" },
-  "PE-04": { asset: "/curriculum-media/greentech-water-irrigation.webp", alt: "Water storage, pumping and irrigation equipment at a training site", role: "context" },
-  "PT-04": { asset: "/curriculum-media/pathways-girls-digital-learning.webp", alt: "Young women taking part in supervised digital learning", role: "context" },
-  "PT-12": { asset: "/curriculum-media/pathways-kadara-transition.webp", alt: "Learners progressing from foundational learning to practical skills", role: "hero" },
+  "PF-01": { asset: "/curriculum-media/foundational-reading-picture-word-learning.webp", alt: "Pathways learners practising foundational reading with picture-word materials", role: "hero" },
+  "PF-02": { asset: "/curriculum-media/numeracy-through-everyday-objects.webp", alt: "Pathways learners applying numeracy with everyday objects", role: "context" },
+  "PF-03": { asset: "/curriculum-media/pathways-foundational-storytelling.webp", alt: "Pathways learners developing understanding through facilitated storytelling", role: "context" },
+  "PF-04": { asset: "/curriculum-media/digital-documentation-of-learning.webp", alt: "Pathways learners documenting garden learning with a tablet", role: "hero" },
+  "PF-05": { asset: "/curriculum-media/pathways-garden-planting.webp", alt: "Pathways learners planting and caring for a learning garden", role: "hero" },
+  "PF-06": { asset: "/curriculum-media/safe-water-handwashing.webp", alt: "Pathways learners learning safe water and handwashing practices", role: "context" },
+  "PF-07": { asset: "/curriculum-media/water-conservation-in-the-garden.webp", alt: "Pathways learners conserving water in a productive garden", role: "context" },
+  "PF-08": { asset: "/curriculum-media/harvesting-food-discovery.webp", alt: "Pathways learners discovering food through supervised harvesting", role: "hero" },
+  "PF-09": { asset: "/curriculum-media/creative-problem-solving-drawing.webp", alt: "Pathways learners developing ideas through creative problem solving", role: "context" },
+  "PF-10": { asset: "/curriculum-media/digital-beginnings-with-tablets.webp", alt: "Pathways learners beginning responsible digital learning with tablets", role: "hero" },
+  "PF-11": { asset: "/curriculum-media/out-of-school-girl-building-confidence.webp", alt: "A Pathways learner building confidence through supported participation", role: "context" },
+  "PF-12": { asset: "/curriculum-media/pathways-kadara-future-transition.webp", alt: "Pathways learners preparing for transition into practical skills", role: "hero" },
+  "PE-01": { asset: "/curriculum-media/first-introduction-to-practical-skills.webp", alt: "Pathways learners receiving their first introduction to practical skills", role: "hero" },
+  "PE-04": { asset: "/curriculum-media/facilitator-supporting-diverse-learners.webp", alt: "A facilitator supporting diverse Pathways learners", role: "context" },
+  "PE-09": { asset: "/curriculum-media/introduction-to-enterprise-through-garden-products.webp", alt: "Pathways learners exploring enterprise through garden products", role: "hero" },
+  "PT-04": { asset: "/curriculum-media/recycling-environmental-stewardship.webp", alt: "Pathways learners practising recycling and environmental stewardship", role: "context" },
+  "PT-12": { asset: "/curriculum-media/almajiri-boys-out-of-school-girls-learning-together.webp", alt: "Almajiri boys and out-of-school girls learning together in Pathways", role: "hero" },
 
   // Kadara: skills, work-readiness and practical application.
   "KS-01": { asset: "/curriculum-media/kadara-skills-workshop.webp", alt: "Kadara learners developing practical skills under supervision", role: "hero" },
