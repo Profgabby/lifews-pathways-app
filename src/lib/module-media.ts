@@ -54,48 +54,54 @@ const media: Record<string, ModuleMedia> = {
   "KE-11": { asset: "/curriculum-media/kadara-supervisor-feedback-competency-verification.webp", alt: "A Kadara supervisor giving feedback and verifying learner competence", role: "hero" },
 
   // GreenTech Foundation Technician.
-  "GF-01": { asset: "/curriculum-media/greentech-integrated-few.webp", alt: "Integrated food, energy and water training system", role: "hero" },
-  "GF-02": { asset: "/curriculum-media/greentech-fieldwork.webp", alt: "Technical learners completing supervised fieldwork with appropriate PPE", role: "context" },
-  "GF-03": { asset: "/curriculum-media/greentech-tools-maintenance.webp", alt: "Technical measurement and maintenance tools arranged for supervised training", role: "context" },
-  "GF-04": { asset: "/curriculum-media/greentech-electrical-measurement.webp", alt: "Safe electrical measurement on protected training equipment", role: "context" },
-  "GF-05": { asset: "/curriculum-media/greentech-agrivoltaics.webp", alt: "Photovoltaic and agrivoltaic equipment at an agricultural training site", role: "context" },
-  "GF-06": { asset: "/curriculum-media/greentech-water-irrigation.webp", alt: "Water storage, pumping and irrigation system used for technician training", role: "context" },
-  "GF-07": { asset: "/curriculum-media/greentech-crop-observation.webp", alt: "Learners measuring soil and crop conditions in the field", role: "context" },
-  "GF-08": { asset: "/curriculum-media/greentech-sensors-data.webp", alt: "Agricultural sensors and digital data collection in the field", role: "context" },
-  "GF-09": { asset: "/curriculum-media/greentech-tools-maintenance.webp", alt: "Supervised fabrication and maintenance practice", role: "context" },
-  "GF-10": { asset: "/curriculum-media/food-processing-hygiene.webp", alt: "Clean food-processing and hygiene training", role: "context" },
-  "GF-11": { asset: "/curriculum-media/greentech-fieldwork.webp", alt: "Technical learners documenting practical field evidence", role: "context" },
-  "GF-12": { asset: "/curriculum-media/greentech-integrated-few.webp", alt: "Integrated food, energy and water system used for practical assessment", role: "hero" },
+  "GF-01": { asset: "/curriculum-media/greentech-integrated-food-energy-water-systems-hero.webp", alt: "Integrated food, energy and water system for GreenTech training", role: "hero" },
+  "GF-02": { asset: "/curriculum-media/greentech-pre-task-technical-safety-briefing.webp", alt: "GreenTech learners receiving a technical safety briefing", role: "hero" },
+  "GF-03": { asset: "/curriculum-media/greentech-electrical-measurement-with-multimeter.webp", alt: "GreenTech learners using a multimeter for protected technical measurement", role: "context" },
+  "GF-04": { asset: "/curriculum-media/greentech-safe-pv-electrical-measurement.webp", alt: "Safe photovoltaic electrical measurement during GreenTech training", role: "context" },
+  "GF-05": { asset: "/curriculum-media/greentech-photovoltaic-system-components-hero.webp", alt: "Photovoltaic system components arranged for technician learning", role: "hero" },
+  "GF-06": { asset: "/curriculum-media/greentech-pumping-water-storage-system.webp", alt: "Pumping and water storage system used for GreenTech training", role: "hero" },
+  "GF-07": { asset: "/curriculum-media/greentech-drip-emitter-performance-testing.webp", alt: "GreenTech learners testing drip emitter performance", role: "context" },
+  "GF-08": { asset: "/curriculum-media/greentech-water-productivity-crop-monitoring.webp", alt: "GreenTech learners monitoring water productivity and crops", role: "context" },
+  "GF-09": { asset: "/curriculum-media/greentech-field-sensor-network.webp", alt: "Field sensor network supporting GreenTech monitoring", role: "context" },
+  "GF-10": { asset: "/curriculum-media/greentech-filter-valve-irrigation-maintenance.webp", alt: "GreenTech learners maintaining filters, valves and irrigation components", role: "context" },
+  "GF-11": { asset: "/curriculum-media/greentech-calibration-technical-documentation.webp", alt: "Technical calibration and documentation during GreenTech training", role: "context" },
+  "GF-12": { asset: "/curriculum-media/greentech-completed-small-few-demonstration-system.webp", alt: "Completed small food-energy-water demonstration system", role: "hero" },
 
   // FEW Systems Technician: site evidence, integration and commissioning.
-  "GT2-01": { asset: "/curriculum-media/greentech-fieldwork.webp", alt: "Technicians conducting a supervised site assessment", role: "hero" },
-  "GT2-02": { asset: "/curriculum-media/greentech-integrated-few.webp", alt: "Integrated food, energy and water infrastructure for technical design", role: "context" },
-  "GT2-03": { asset: "/curriculum-media/greentech-water-irrigation.webp", alt: "Pump, storage and irrigation infrastructure used for hydraulic assessment", role: "context" },
-  "GT2-04": { asset: "/curriculum-media/greentech-agrivoltaics.webp", alt: "Photovoltaic generation integrated with agricultural operations", role: "context" },
-  "GT2-05": { asset: "/curriculum-media/greentech-electrical-measurement.webp", alt: "Protected electrical measurement during technician training", role: "context" },
-  "GT2-06": { asset: "/curriculum-media/greentech-sensors-data.webp", alt: "Field sensors connected to digital monitoring and data collection", role: "context" },
-  "GT2-07": { asset: "/curriculum-media/greentech-integrated-few.webp", alt: "Connected food, energy and water subsystems at a training site", role: "context" },
-  "GT2-08": { asset: "/curriculum-media/greentech-tools-maintenance.webp", alt: "Technicians inspecting and maintaining system components", role: "context" },
-  "GT2-09": { asset: "/curriculum-media/greentech-sensors-data.webp", alt: "Technicians reviewing measured system data", role: "context" },
-  "GT2-10": { asset: "/curriculum-media/greentech-fieldwork.webp", alt: "Supervised technicians verifying system operation in the field", role: "context" },
-  "GT2-11": { asset: "/curriculum-media/greentech-integrated-few.webp", alt: "Integrated FEW system prepared for commissioning and verification", role: "context" },
-  "GT2-12": { asset: "/curriculum-media/greentech-fieldwork.webp", alt: "Technicians completing a supervised integrated field assessment", role: "hero" },
+  "GT2-01": { asset: "/curriculum-media/greentech-mapping-few-system-components.webp", alt: "Technicians mapping food-energy-water system components", role: "hero" },
+  "GT2-02": { asset: "/curriculum-media/greentech-flow-measurement-pipework-testing.webp", alt: "Technicians measuring flow and testing pipework", role: "context" },
+  "GT2-03": { asset: "/curriculum-media/greentech-photovoltaic-system-components-hero.webp", alt: "Photovoltaic components for training array configuration", role: "hero" },
+  "GT2-04": { asset: "/curriculum-media/greentech-battery-charge-controller-inspection.webp", alt: "Technicians inspecting a battery and charge controller", role: "context" },
+  "GT2-05": { asset: "/curriculum-media/greentech-pumping-water-storage-system.webp", alt: "Pump and water storage equipment for FEW system installation", role: "context" },
+  "GT2-06": { asset: "/curriculum-media/greentech-pumping-water-storage-system.webp", alt: "Technicians assessing water storage and distribution equipment", role: "context" },
+  "GT2-07": { asset: "/curriculum-media/greentech-drip-emitter-performance-testing.webp", alt: "Technicians testing drip irrigation emitter performance", role: "context" },
+  "GT2-08": { asset: "/curriculum-media/greentech-agrivoltaic-microclimate-observation.webp", alt: "Technicians observing crop and microclimate conditions under agrivoltaics", role: "hero" },
+  "GT2-09": { asset: "/curriculum-media/greentech-field-sensor-network.webp", alt: "Technicians installing a field sensor network", role: "context" },
+  "GT2-10": { asset: "/curriculum-media/greentech-digital-dashboard-telemetry-review.webp", alt: "Technicians reviewing a digital telemetry dashboard", role: "context" },
+  "GT2-11": { asset: "/curriculum-media/greentech-system-commissioning-verification.webp", alt: "Technicians commissioning and verifying an integrated system", role: "hero" },
+  "GT2-12": { asset: "/curriculum-media/greentech-completed-small-few-demonstration-system.webp", alt: "Completed FEW system prepared for technician assessment", role: "hero" },
 
   // Advanced Systems: integrated control, evidence and optimisation.
-  "GA-01": { asset: "/curriculum-media/greentech-integrated-few.webp", alt: "Advanced integrated food, energy and water system", role: "hero" },
-  "GA-02": { asset: "/curriculum-media/greentech-sensors-data.webp", alt: "Advanced sensor monitoring and digital data collection", role: "context" },
-  "GA-03": { asset: "/curriculum-media/greentech-water-irrigation.webp", alt: "Water storage and pumping infrastructure for advanced system analysis", role: "context" },
-  "GA-04": { asset: "/curriculum-media/greentech-agrivoltaics.webp", alt: "Agrivoltaic generation integrated with agricultural loads", role: "context" },
-  "GA-05": { asset: "/curriculum-media/greentech-electrical-measurement.webp", alt: "Advanced electrical measurements on protected equipment", role: "context" },
-  "GA-06": { asset: "/curriculum-media/greentech-sensors-data.webp", alt: "Sensor evidence supporting advanced system control", role: "context" },
-  "GA-07": { asset: "/curriculum-media/greentech-integrated-few.webp", alt: "Integrated FEW infrastructure supporting coordinated control", role: "context" },
-  "GA-08": { asset: "/curriculum-media/greentech-fieldwork.webp", alt: "Advanced technicians verifying system behaviour in the field", role: "context" },
-  "GA-09": { asset: "/curriculum-media/greentech-tools-maintenance.webp", alt: "Technical troubleshooting and maintenance practice", role: "context" },
-  "GA-10": { asset: "/curriculum-media/greentech-sensors-data.webp", alt: "Digital measurements used for performance analysis", role: "context" },
-  "GA-11": { asset: "/curriculum-media/greentech-integrated-few.webp", alt: "Integrated system used for optimisation and technical review", role: "context" },
-  "GA-12": { asset: "/curriculum-media/greentech-fieldwork.webp", alt: "Advanced technicians completing a supervised capstone field assessment", role: "hero" },
+  "GA-01": { asset: "/curriculum-media/greentech-integrated-food-energy-water-systems-hero.webp", alt: "Advanced integrated food-energy-water system architecture", role: "hero" },
+  "GA-02": { asset: "/curriculum-media/greentech-photovoltaic-system-components-hero.webp", alt: "Technicians reviewing photovoltaic equipment for integrated system design", role: "hero" },
+  "GA-03": { asset: "/curriculum-media/greentech-pumping-water-storage-system.webp", alt: "Pumping and storage infrastructure for integrated water-energy design", role: "context" },
+  "GA-04": { asset: "/curriculum-media/greentech-agrivoltaic-crop-system-hero.webp", alt: "Technicians reviewing an agrivoltaic crop system for design and operation", role: "hero" },
+  "GA-05": { asset: "/curriculum-media/greentech-sensor-evidence-data-validation.webp", alt: "Advanced sensor evidence and data validation", role: "context" },
+  "GA-06": { asset: "/curriculum-media/greentech-troubleshooting-control-logic.webp", alt: "Advanced technicians troubleshooting control logic", role: "context" },
+  "GA-07": { asset: "/curriculum-media/greentech-sensor-evidence-data-validation.webp", alt: "Technicians validating evidence for system performance analysis", role: "context" },
+  "GA-08": { asset: "/curriculum-media/greentech-troubleshooting-control-logic.webp", alt: "Advanced technicians diagnosing faults and reliability issues", role: "context" },
+  "GA-09": { asset: "/curriculum-media/greentech-filter-valve-irrigation-maintenance.webp", alt: "Technicians reviewing irrigation components for maintenance planning", role: "context" },
+  "GA-11": { asset: "/curriculum-media/greentech-chatgpt-image-sep-17-2026-04-43-26-pm.webp", alt: "A technical supervisor guiding a team through photovoltaic equipment measurement", role: "context" },
+  "GA-12": { asset: "/curriculum-media/greentech-advanced-capstone-design-performance-evidence.webp", alt: "Advanced technicians presenting capstone design, performance and evidence", role: "hero" },
 };
 
-export function getModuleMedia(code: string): ModuleMedia | null {
-  return media[code.toUpperCase()] ?? null;
+// Supporting safety photographs are shown within the learning sequence.
+const sectionMedia: Record<string, ModuleMedia> = {
+  "GF-02:2": { asset: "/curriculum-media/greentech-ppe-inspection-before-technical-work.webp", alt: "Instructor checking learners' personal protective equipment before technical work", role: "context" },
+  "GF-02:3": { asset: "/curriculum-media/greentech-hazard-identification-walkthrough.webp", alt: "GreenTech team identifying site hazards during a supervised walkthrough", role: "context" },
+};
+
+export function getModuleMedia(code: string, step = 1): ModuleMedia | null {
+  const normalizedCode = code.toUpperCase();
+  return step === 1 ? media[normalizedCode] ?? null : sectionMedia[`${normalizedCode}:${step}`] ?? null;
 }

@@ -3,6 +3,7 @@ import { getModuleMedia } from "@/lib/module-media";
 type ModuleContextMediaProps = {
   code: string;
   priority?: boolean;
+  step?: number;
 };
 
 /**
@@ -10,8 +11,8 @@ type ModuleContextMediaProps = {
  * modules benefit from photography, so assessment-heavy pages remain visually
  * quiet and the same approved LIFEWS image can support related competencies.
  */
-export function ModuleContextMedia({ code, priority = false }: ModuleContextMediaProps) {
-  const media = getModuleMedia(code);
+export function ModuleContextMedia({ code, priority = false, step = 1 }: ModuleContextMediaProps) {
+  const media = getModuleMedia(code, step);
   if (!media) return null;
 
   return (
